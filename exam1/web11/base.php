@@ -162,3 +162,6 @@ function q($sql){
 // $total = new DB('total');
 // dd($total->find(1));
 // echo $total->sum('id');
+
+$Total = new DB("total");
+$Bottom = new DB("bottom");
