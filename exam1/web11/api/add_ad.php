@@ -8,7 +8,7 @@ $data = [];
 $data['text'] = $_POST['text'];
 
 //預設不顯示
-$data['sh'] = 1;
+$data['sh'] = 0;
 
 $Ad->save($data); //寫入資料表
     // dd($data);   
