@@ -7,6 +7,11 @@ class DB
     protected $pdo;
     protected $user = "root";
     protected $pw = "";
+    // protected $header = [ 'title' =>'網站標題管理',
+    //                       'ad' 	=>'動態文字廣告管理',
+    //                       'mvim'  =>'動畫圖片管理',
+    //                       'image' =>'校園映像資料管理',
+    //                       'news' 	=>'最新消息資料管理'];
 
     function __construct($table)
     {
@@ -52,7 +57,8 @@ class DB
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
-    function save(...$arg){ //新增或更新
+    function save($arg){ //新增或更新
+        // dd($arg);
         if(isset($arg['id'])){
             //update
             foreach ($arg as $key => $value) {  //陣列內容字串化
@@ -60,27 +66,44 @@ class DB
             }
             $sql="update $this->table set " . join(',',$tmp). " where `id` = '{$arg['id']}'";
         }else{ //insert
-            $cols = array_keys($arg);
+            $cols=array_keys($arg);
+            // dd($cols); 
             $sql="insert into $this->table (`".join("`,`",$cols)."`) 
-                values ('".join("','",$arg)."')";
-
+                                      values('".join("','",$arg)."')";
         }
-        return $this->pdo->query($sql);
+        
+        // dd($sql); 
 
+        return $this->pdo->exec($sql);
     }
 
-    function del(...$arg) { //刪除一筆或多筆
+      /*
+     * 刪除資料的方法
+     * 限制只能帶入一個參數
+     * $arg 如果是陣列，表示要刪除符合陣列條件的資料(可能是多筆刪除)
+     * $arg 如果是數字，表示要刪除指定id的資料
+     * $arg 如果是字串，表示要刪除指定SQL條件語法的資料
+     */
+
+    function del($arg) { //刪除一筆或多筆
         $sql = "delete from $this->table ";
             if (is_array($arg)) {
                 foreach ($arg as $key => $value) {
                     $tmp[] = "`$key`='$value'";
                 }
-                $sql += " where " . join(" && ", $tmp);
-            } else {
+                $sql = $sql . " where " . join(" && ", $tmp);
+                
+            } else if(is_numeric($arg)){
+                $sql = $sql ." where `id` =". $arg;
+            }else{
                 $sql = $sql . $arg;
             }
+            echo $sql;
+            
             return $this->pdo->exec($sql);
         }
+
+        
     
 
     function count(...$arg){ //計算筆數
@@ -144,6 +167,74 @@ class DB
     }
 }
 
+class Ad extends DB{
+
+    public $header = '動態文字廣告管理';
+    public function __construct()
+    {
+        // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
+        // $this->table = 'ad';
+        parent::__construct('ad');
+    }
+}
+
+class Title extends DB{
+
+    public $header = '網站標題管理';
+    public function __construct()
+    {
+        // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
+        // $this->table = 'title';
+        parent::__construct('title');
+    }
+}
+
+class Image extends DB{
+    public $header = '校園映像資料管理';
+    public function __construct()
+    {
+        // $this->pdo = new PDO($this->dsn, $this->user , $this->pw);
+        // $this->table = 'image';
+        parent::__construct('image');
+    }
+}
+
+class Mvim extends DB{
+    public $header = '動畫圖片管理';
+    public function __construct()
+    {
+        // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
+        // $this->table = 'mvim';
+        parent::__construct('mvim');
+    }
+}
+
+class News extends DB{
+    public $header = '最新消息資料管理';
+    public function __construct()
+    {
+        parent::__construct('news');
+    }
+}
+
+class Total extends DB{
+    public $header = '進站人數管理';
+    public function __construct()
+    {
+        parent::__construct('total');
+    }
+}
+
+class Bottom extends DB{
+    public $header = '頁尾版權管理';
+    public function __construct()
+    {
+        parent::__construct('bottom');
+    }
+}
+
+
+
 function dd($array)
 {
     echo "<pre>";
@@ -152,7 +243,7 @@ function dd($array)
 }
 
 function to($url){
-    header("location" . $url);
+    header("location:" . $url);
 }
 
 function q($sql){
@@ -163,5 +254,16 @@ function q($sql){
 // dd($total->find(1));
 // echo $total->sum('id');
 
-$Total = new DB("total");
-$Bottom = new DB("bottom");
+$Total = new Total;
+$Bottom = new Bottom;
+$Title = new Title;
+$Ad = new Ad;
+$Image = new Image;
+$Mvim = new Mvim;
+
+
+// $Total = new DB("total");
+// $Bottom = new DB("bottom");
+// $Title = new DB("title");
+// $Ad = new DB("ad");
+// $Image = new DB("image");

@@ -1,4 +1,4 @@
-﻿<?php include_once "base.php" ?>
+﻿<?php include_once "base.php";?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0068)?do=admin&redo=title -->
@@ -78,6 +78,27 @@
 
 				$do = $_GET['do'] ?? 'title';
 				$file = "./back/" . $do . ".php";
+				
+
+				// switch($do){
+
+				// 	case "title":
+				// 		$header='網站標題管理';
+				// 	break;
+					
+				// 	case "ad":
+				// 		$header = '動態文字廣告管理';
+				// 	break;
+					
+				// 	case "mvim":
+				// 		$header = '動畫圖片管理';
+				// 	break;
+
+				// 	case "image":
+				// 		$header = '校園映像資料管理';
+				// 	break;
+
+				// 	}
 
 				if (file_exists($file)) {
 					include $file;
