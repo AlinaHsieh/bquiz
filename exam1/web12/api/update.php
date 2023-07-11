@@ -5,6 +5,8 @@ $db = ucfirst($table);
 
 if (isset($_POST['text'])) {
     $rows = $_POST['text'];
+}else if($table == 'admin'){
+    $rows = $_POST['acc'];
 } else {
     $rows = array_column($$db->all(), 'img', 'id');
 }
@@ -25,7 +27,8 @@ foreach ($rows as $id => $text) {
                 break;
 
             case 'admin':
-
+                $row['acc'] = $text;
+                $row['pw'] = $_POST['pw'][$id];  //dd($_POST)會發現：acc與pw的key值($id)是相對應的
                 break;
 
             case 'menu':
