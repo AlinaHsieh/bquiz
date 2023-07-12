@@ -59,6 +59,8 @@ class DB
                 $tmp[] = "`$key`='$value'"; //把條件做成暫時的字串陣列
             }
             $sql = "update $this->table set " . join(',', $tmp) . " where `id` = '{$arg['id']}'";
+            // echo $sql;
+
         } else { //insert
             $cols = array_keys($arg);
             $sql = "insert into $this->table (`" . join("`,`", $cols) . "`) 
@@ -156,11 +158,23 @@ function q($sql)
 
 class Title extends DB
 {
+    public $header = '網站標題管理';
+    public $add_header = '新增網站標題圖片';
     public function __construct()
     {
-        $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
-        $this->table = 'title';
-        $this->header = '網站標題管理';
+        parent::__construct('title');
+        
+    }
+    function add_form(){
+     ?>
+        <div>
+           標題區圖片：<input type="file" name="img">
+        </div>
+        <div>
+            標題區替代文字<input type="text" name="text">
+        </div>
+     
+     <?php
     }
 }
 
@@ -171,6 +185,14 @@ class Ad extends DB
         $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         $this->table = 'ad';
         $this->header = '動態文字廣告';
+        $this->add_header = '新增動態文字廣告';
+    }
+    function add_form(){
+        ?>
+    <div>
+    動態文字廣告<input type="text" name="text">
+    </div>
+        <?php
     }
 }
 
@@ -181,6 +203,47 @@ class Admin extends DB
         $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         $this->table = 'admin';
         $this->header = '管理者帳號管理';
+        $this->add_header = '新增管理者帳號';
+    }
+    function add_form(){
+        ?>
+    <div>
+        <td>帳號：</td>
+        <td><input type="text" name="acc"></td>
+    </div>
+    <div>
+        <td>密碼：</td>
+        <td><input type="password" name="pw"></td>
+        
+    </div>
+    <div>
+        確認密碼：<input type="password" name="pw2">
+    </div>
+        <?php
+    }
+}
+
+class Menu extends DB
+{
+    public function __construct()
+    {
+        $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
+        $this->table = 'menu';
+        $this->header = '選單管理';
+        $this->add_header = '新增主選單';
+    }
+    function add_form(){
+        ?>
+    <div>
+        <td>主選單名稱：</td>
+        <td><input type="text" name="text"></td>
+    </div>
+    <div>
+        <td>選單連結網址：</td>
+        <td><input type="text" name="href"></td>
+        
+    </div>
+        <?php
     }
 }
 
@@ -191,6 +254,14 @@ class Image extends DB
         $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         $this->table = 'image';
         $this->header = '校園映像資料管理';
+        $this->add_header = '新增校園映像圖片';
+    }
+    function add_form(){
+        ?>
+    <div>
+        校園映像圖片：<input type="file" name="img">
+    </div>
+        <?php
     }
 }
 
@@ -211,6 +282,14 @@ class Mvim extends DB
         $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         $this->table = 'mvim';
         $this->header = '動畫圖片管理';
+        $this->add_header = '新增動畫圖片';
+    }
+    function add_form(){
+        ?>
+     <div>
+        動畫圖片：<input type="file" name="img">
+    </div>
+        <?php
     }
 }
 
@@ -231,6 +310,18 @@ class News extends DB
         $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         $this->table = 'news';
         $this->header = '最新消息管理';
+        $this->add_header = '新增最新消息資料';
+    }
+    function add_form(){
+        ?>
+      <div>
+      <td>
+      最新消息資料
+      </td>
+      <td>
+         <textarea name="text" style="width: 400px; height:200px;"></textarea>
+      </td>
+        <?php
     }
 }
 
@@ -243,6 +334,6 @@ $Image = new Image();
 $Mvim = new Mvim();
 $News = new News();
 $Admin = new Admin();
-
+$Menu = new Menu();
 // $Total = new DB("total");
 

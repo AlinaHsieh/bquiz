@@ -36,7 +36,7 @@
 			<tbody>
 				<tr>
 					<input type="hidden" name="table" value="mvim">
-					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/mvim.php')" value="新增動畫圖片"></td>
+					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=mvim')" value="新增動畫圖片"></td>
 					<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
 				</tr>
 			</tbody>

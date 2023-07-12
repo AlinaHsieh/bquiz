@@ -35,7 +35,7 @@
 		<table style="margin-top:40px; width:70%;">
 			<tbody>
 				<tr>
-					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/news.php')" value="新增最新消息資料"></td>
+					<td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=news')" value="新增最新消息資料"></td>
 					<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
 				</tr>
 			</tbody>

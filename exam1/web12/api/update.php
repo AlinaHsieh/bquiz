@@ -11,6 +11,7 @@ if (isset($_POST['text'])) {
     $rows = array_column($$db->all(), 'img', 'id');
 }
 // dd($rows);
+
 foreach ($rows as $id => $text) {
 // dd($text);
 
@@ -19,7 +20,7 @@ foreach ($rows as $id => $text) {
         
     } else {
         $row = $$db->find($id); //先撈出資料庫的資料
-
+        // dd($row);
         switch ($table) {
             case 'title':
                 $row['text'] = $text;  //用$_POST['text']蓋過去
@@ -29,10 +30,13 @@ foreach ($rows as $id => $text) {
             case 'admin':
                 $row['acc'] = $text;
                 $row['pw'] = $_POST['pw'][$id];  //dd($_POST)會發現：acc與pw的key值($id)是相對應的
+
                 break;
 
             case 'menu':
-
+                $row['text'] = $text;
+                $row['href'] = $_POST['href'][$id];
+                $row['sh'] = (!empty($_POST['sh']) && in_array($id, $_POST['sh'])) ? 1 : 0;
                 break;
 
             default:
