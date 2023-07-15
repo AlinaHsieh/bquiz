@@ -6,12 +6,14 @@ $db = ucfirst($table);
 
 if(isset($_POST['text'])){
     $rows = $_POST['text'];
+}else if($table == 'admin'){
+    $rows = $_POST['acc'];
 }else{
     $rows =array_column($$db->all(),'img','id');
 }
 
 foreach($rows as $id => $text){
-    dd($rows);
+    // dd($text);
     if(!empty($_POST['del']) && in_array($id,$_POST['del'])){
         $$db->del($id);
     }else{  
@@ -22,6 +24,9 @@ foreach($rows as $id => $text){
                 $row['sh']=($_POST['sh']==$id)?1:0;  //title的sh只顯示一個，獨立出來寫這裡
             break;
             case "admin" :
+                $row['acc'] = $text;
+                $row['pw'] = $_POST['pw'][$id];
+                dd($row);
             break;
 
             case "menu" :
@@ -48,5 +53,3 @@ foreach($rows as $id => $text){
     }
 }
 to("../backend.php?do=$table");
-
-?>

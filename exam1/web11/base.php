@@ -232,7 +232,13 @@ class Bottom extends DB{
         parent::__construct('bottom');
     }
 }
-
+class Admin extends DB{
+    public $header = '管理者帳號管理';
+    public function __construct()
+    {
+        parent::__construct('admin');
+    }
+}
 
 
 function dd($array)
@@ -260,7 +266,8 @@ $Title = new Title;
 $Ad = new Ad;
 $Image = new Image;
 $Mvim = new Mvim;
-
+$News = new News;
+$Admin = new Admin;
 
 // $Total = new DB("total");
 // $Bottom = new DB("bottom");
