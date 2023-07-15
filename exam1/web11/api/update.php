@@ -30,6 +30,9 @@ foreach($rows as $id => $text){
             break;
 
             case "menu" :
+                $row['text']=$text;
+                $row['href'] = $_POST['href'][$id];
+                $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
             break;
 
             default:

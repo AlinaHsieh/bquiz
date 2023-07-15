@@ -7,6 +7,8 @@ class DB
     protected $pdo;
     protected $user = "root";
     protected $pw = "";
+    protected $add_header;
+    protected $header;
     // protected $header = [ 'title' =>'網站標題管理',
     //                       'ad' 	=>'動態文字廣告管理',
     //                       'mvim'  =>'動畫圖片管理',
@@ -165,55 +167,134 @@ class DB
 
         return $this->pdo->query($sql)->fetchColumn();
     }
+    //彈出視窗的模板
+    protected function modal($slot){
+    ?>
+    <h3><?=$this->add_header?></h3>
+    <hr>
+       <form action="./api/add.php" method="post" enctype="multipart/form-data">
+            <table>
+            <?=$slot?>
+            <tr>
+            <input type="hidden" name="table" value="<?=$this->table?>">
+            <td><input type="submit" value="新增"></td>
+            <td><input type="reset" value="重置"></td>
+        </tr>
+    </table>
+    </form>
+    <?php
+    }
+
+    //後台管理畫面(各分頁)模板
+    function backend($slot){
+    ?>
+    <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
+        <p class="t cent botli"><?=$this->header?></p>
+        <form method="post" action="./api/update.php">
+            <?php include $slot;?>
+        </form>
+    </div>
+    <?php
+    }
 }
 
 class Ad extends DB{
 
     public $header = '動態文字廣告管理';
+    protected $add_header = '新增動態文字廣告';
     public function __construct()
     {
         // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         // $this->table = 'ad';
         parent::__construct('ad');
     }
+    public function add_form(){
+    
+    $form="<tr>
+                <td>動態文字廣告：</td>
+                <td><input type='text' name='text'></td>
+           </tr>";
+    $this->modal($form); //執行：modal裡面放$form
+    }
 }
 
 class Title extends DB{
 
     public $header = '網站標題管理';
+    public $add_header = '新增網站標題圖片';
     public function __construct()
     {
         // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         // $this->table = 'title';
         parent::__construct('title');
     }
+
+    //title彈出視窗的分頁內容
+    public function add_form(){
+    $form = "<tr>
+             <td>標題區圖片：</td>
+             <td><input type='file' name='img'></td>
+             </tr>
+             <tr>
+             <td>標題區替代文字：</td>
+             <td><input type='text' name='text'></td>
+             </tr>";
+        $this->modal($form);
+    }
+
+    //title的 back 分頁的內容
+    public function list(){
+        $this->backend("./view/title.php");
+    }
 }
 
 class Image extends DB{
     public $header = '校園映像資料管理';
+    public $add_header = '新增校園映像圖片';
     public function __construct()
     {
         // $this->pdo = new PDO($this->dsn, $this->user , $this->pw);
         // $this->table = 'image';
         parent::__construct('image');
     }
+    public function add_form(){
+    $this->modal("<tr>
+                    <td>校園映像資料圖片：</td>
+                    <td><input type='file' name='img'></td>
+                    </tr>");
+    
+    }
 }
 
 class Mvim extends DB{
     public $header = '動畫圖片管理';
+    public $add_header = '新增動畫圖片';
     public function __construct()
     {
         // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         // $this->table = 'mvim';
         parent::__construct('mvim');
     }
+    public function add_form(){
+    $this->modal("<tr>
+                    <td>標題區圖片：</td>
+                    <td><input type='file' name='img'></td>
+                  </tr>") ;
+    }
 }
 
 class News extends DB{
     public $header = '最新消息資料管理';
+    public $add_header = '新增最新消息資料';
     public function __construct()
     {
         parent::__construct('news');
+    }
+    public function add_form(){
+    $this->modal("<tr>
+                    <td>最新消息資料：</td>
+                    <td><textarea name='text' width='150px' height='80px'></textarea></td>
+                  </tr>");   
     }
 }
 
@@ -223,6 +304,11 @@ class Total extends DB{
     {
         parent::__construct('total');
     }
+    public function add_form(){
+    ?>
+    
+    <?php    
+    }
 }
 
 class Bottom extends DB{
@@ -231,12 +317,50 @@ class Bottom extends DB{
     {
         parent::__construct('bottom');
     }
+    public function add_form(){
+    ?>
+    
+    <?php    
+    }
 }
 class Admin extends DB{
     public $header = '管理者帳號管理';
+    public $add_header = '新增管理者帳號';
     public function __construct()
     {
         parent::__construct('admin');
+    }
+    public function add_form(){
+    $this->modal("<tr>
+                    <td>帳號：</td>
+                    <td><input type='text' name='acc'></td>
+                </tr>
+                    <tr>
+                    <td>密碼：</td>
+                    <td><input type='password' name='pw'></td>
+                </tr>
+                <tr>
+                    <td>確認密碼：</td>
+                    <td><input type='password'></td>
+                </tr>");    
+    }
+}
+class Menu extends DB{
+    public $header = '選單管理';
+    public $add_header = '新增選單';
+    public function __construct()
+    {
+        parent::__construct('menu');
+    }
+    public function add_form(){
+    $this->modal("<tr>
+                      <td>主選單名稱：</td>
+                      <td><input type='text' name='text'></td>
+                  </tr>
+                  <tr>
+                      <td>選單連結網址：</td>
+                      <td><input type='text' name='href'></td>
+                  </tr>");    
     }
 }
 
@@ -268,6 +392,7 @@ $Image = new Image;
 $Mvim = new Mvim;
 $News = new News;
 $Admin = new Admin;
+$Menu = new Menu;
 
 // $Total = new DB("total");
 // $Bottom = new DB("bottom");

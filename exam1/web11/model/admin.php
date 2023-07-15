@@ -1,6 +1,6 @@
 <h3>新增管理者帳號</h3>
 <hr>
-<form action="./api/add_form.php" method="post" enctype="multipart/form-data">
+<form action="./api/add.php" method="post" enctype="multipart/form-data">
 <table>
    
     <tr>

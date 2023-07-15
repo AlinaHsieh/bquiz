@@ -1,6 +1,6 @@
 <h3>新增校園映像圖片</h3>
 <hr>
-<form action="./api/add_form.php" method="post" enctype="multipart/form-data">
+<form action="./api/add.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>校園映像資料圖片：</td>

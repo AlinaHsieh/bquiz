@@ -20,10 +20,17 @@ break;
 case 'title':
     $data['sh'] = 0;
 break;
+case 'menu':
+    $data['href'] = $_POST['href'];
+    $data['main_id'] = 0;
+    $data['sh'] = 1;
+break;
 default:
-if(isset($_POST['sh'])){
-    $data['sh']= 1;
-}
+// if(isset($_POST['sh'])){
+//     $data['sh']= 1;
+// }
+$data['sh']= 1;
+
 
 }
 // dd($data);
