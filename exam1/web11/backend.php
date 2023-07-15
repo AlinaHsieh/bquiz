@@ -77,8 +77,14 @@
 				<?php
 
 				$do = $_GET['do'] ?? 'title';
-				$file = "./back/" . $do . ".php";
+				$table = ucfirst($do);
+				$$table->list();
+
+
+				// $do = $_GET['do'] ?? 'title';
+				// $file = "./back/" . $do . ".php";
 				
+
 
 				// switch($do){
 

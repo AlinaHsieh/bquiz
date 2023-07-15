@@ -1,5 +1,4 @@
-<?php include_once "./base.php";
-?>
+
 <table width="100%">
             <tbody>
                 <tr class="yel">

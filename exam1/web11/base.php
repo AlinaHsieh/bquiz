@@ -208,6 +208,8 @@ class Ad extends DB{
         // $this->table = 'ad';
         parent::__construct('ad');
     }
+
+    //ad彈跳視窗
     public function add_form(){
     
     $form="<tr>
@@ -215,6 +217,11 @@ class Ad extends DB{
                 <td><input type='text' name='text'></td>
            </tr>";
     $this->modal($form); //執行：modal裡面放$form
+    }
+
+     //ad的 back 分頁的內容
+     public function list(){
+        $this->backend("./view/ad.php");
     }
 }
 
@@ -257,12 +264,17 @@ class Image extends DB{
         // $this->table = 'image';
         parent::__construct('image');
     }
+    //image彈出視窗的內容
     public function add_form(){
     $this->modal("<tr>
                     <td>校園映像資料圖片：</td>
                     <td><input type='file' name='img'></td>
                     </tr>");
     
+    }
+    //image的 back 分頁的內容
+    public function list(){
+        $this->backend("./view/image.php");
     }
 }
 
@@ -275,11 +287,18 @@ class Mvim extends DB{
         // $this->table = 'mvim';
         parent::__construct('mvim');
     }
+
+    //Mvim彈跳視窗
     public function add_form(){
     $this->modal("<tr>
                     <td>標題區圖片：</td>
                     <td><input type='file' name='img'></td>
                   </tr>") ;
+    }
+
+    //mvim的 back 分頁的內容
+    public function list(){
+        $this->backend("./view/mvim.php");
     }
 }
 
@@ -290,11 +309,18 @@ class News extends DB{
     {
         parent::__construct('news');
     }
+
+    //news彈跳視窗
     public function add_form(){
     $this->modal("<tr>
                     <td>最新消息資料：</td>
                     <td><textarea name='text' width='150px' height='80px'></textarea></td>
                   </tr>");   
+    }
+
+    //news的 back 分頁的內容
+    public function list(){
+        $this->backend("./view/news.php");
     }
 }
 
@@ -330,6 +356,8 @@ class Admin extends DB{
     {
         parent::__construct('admin');
     }
+
+    //admin彈跳視窗
     public function add_form(){
     $this->modal("<tr>
                     <td>帳號：</td>
@@ -344,6 +372,11 @@ class Admin extends DB{
                     <td><input type='password'></td>
                 </tr>");    
     }
+
+    //admin的 back 分頁的內容
+    public function list(){
+        $this->backend("./view/admin.php");
+    }
 }
 class Menu extends DB{
     public $header = '選單管理';
@@ -352,6 +385,8 @@ class Menu extends DB{
     {
         parent::__construct('menu');
     }
+
+    //menu彈跳視窗
     public function add_form(){
     $this->modal("<tr>
                       <td>主選單名稱：</td>
@@ -361,6 +396,11 @@ class Menu extends DB{
                       <td>選單連結網址：</td>
                       <td><input type='text' name='href'></td>
                   </tr>");    
+    }
+
+    //menu的 back 分頁的內容
+    public function list(){
+        $this->backend("./view/menu.php");
     }
 }
 
