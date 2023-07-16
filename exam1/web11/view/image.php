@@ -1,3 +1,12 @@
+<style>
+    a{
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration:underline;
+    }
+
+</style>
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli"><?= $this->header ?></p>
     <form method="post" action="./api/update.php">
@@ -10,7 +19,14 @@
                     <td></td>
                 </tr>
                 <?php
-                $rows = $this->all();
+                // $rows = $this->all();
+                $total = $this->count();
+                $div = 3;
+                $pages = ceil($total / $div);
+                $now = $_GET['page'] ?? 1;
+                $start = ($now - 1) * $div;
+                $rows = $this->all(" limit $start,$div"); //取幾筆顯示(limit前面要空格sql語句才會正確)
+
                 foreach ($rows as $row) {
                 ?>
                     <tr>
@@ -29,9 +45,31 @@
                     </tr>
                 <?php
                 }
+
                 ?>
+
             </tbody>
         </table>
+        <div style="text-align:center">
+            <?php
+
+            if(($now-1)>=1){
+            $prev = $now-1;
+            echo "<a href='?do=image&page=$prev'> &lt;</a>";
+            }
+
+            for($i=1;$i<=$pages;$i++){
+            $fontsize=($i==$now)?"24px":"16px";
+            echo "<a href='?do=image&page=$i' style='font-size:$fontsize'> $i </a>";
+            }
+
+            if(($now+1)<=$pages){
+                $next = $now+1;
+                echo "<a href='?do=image&page=$next'> &gt;</a>";
+            }
+            ?>
+            
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
@@ -42,4 +80,4 @@
             </tbody>
         </table>
     </form>
-    </div>
+</div>

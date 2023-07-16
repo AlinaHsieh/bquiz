@@ -32,6 +32,8 @@ class DB
                 $sql = $sql . "where" . join("&&", $tmp);     //如果是陣列要接條件句
             } else {
                 $sql = $sql . $arg[0];
+                // echo $sql;
+
             }
             if (isset($arg[1])) { //如果有第二個參數 -> 字串
                 $sql = $sql . $arg[1];
