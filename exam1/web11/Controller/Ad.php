@@ -18,7 +18,7 @@ class Ad extends DB{
                 <td>動態文字廣告：</td>
                 <td><input type='text' name='text'></td>
            </tr>";
-    $this->modal($form); //執行：modal裡面放$form
+    $this->modal($form,"./api/add.php"); //執行：modal裡面放$form
     }
 
      //ad的 back 分頁的內容

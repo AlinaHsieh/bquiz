@@ -167,11 +167,11 @@ class DB
         return $this->pdo->query($sql)->fetchColumn();
     }
     //彈出視窗的模板
-    protected function modal($slot){
+    protected function modal($slot,$action){
     ?>
     <h3><?=$this->add_header?></h3>
     <hr>
-       <form action="./api/add.php" method="post" enctype="multipart/form-data">
+       <form action="<?=$action?>" method="post" enctype="multipart/form-data">
             <table>
             <?=$slot?>
             <tr>

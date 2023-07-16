@@ -22,7 +22,7 @@ class Admin extends DB{
                 <tr>
                     <td>確認密碼：</td>
                     <td><input type='password'></td>
-                </tr>");    
+                </tr>","./api/add.php");    
     }
 
     //admin的 back 分頁的內容

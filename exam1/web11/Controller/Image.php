@@ -15,9 +15,21 @@ class Image extends DB{
     $this->modal("<tr>
                     <td>校園映像資料圖片：</td>
                     <td><input type='file' name='img'></td>
-                    </tr>");
+                    </tr>","./api/add.php");
     
     }
+
+    //  更新圖片按鈕的彈出視窗
+    public function update_img($id){
+        $form = "<tr>
+                 <td>$this->header</td>
+                 <td><input type='file' name='img'></td>
+                 </tr>
+                 <input type='hidden' name='id' value='$id'>
+                 ";
+            $this->modal($form,"./api/update_img.php");
+        }
+
     //image的 back 分頁的內容
     public function list(){
         $this->backend("./view/image.php");

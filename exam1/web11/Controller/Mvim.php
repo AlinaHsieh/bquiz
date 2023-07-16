@@ -16,8 +16,18 @@ class Mvim extends DB{
     $this->modal("<tr>
                     <td>標題區圖片：</td>
                     <td><input type='file' name='img'></td>
-                  </tr>") ;
+                  </tr>","./api/add.php") ;
     }
+    //  更新圖片按鈕的彈出視窗
+    public function update_img($id){
+        $form = "<tr>
+                 <td>標題區圖片：</td>
+                 <td><input type='file' name='img'></td>
+                 </tr>
+                 <input type='hidden' name='id' value='$id'>
+                 ";
+            $this->modal($form,"./api/update_img.php");
+        }
 
     //mvim的 back 分頁的內容
     public function list(){

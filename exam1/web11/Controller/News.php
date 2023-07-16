@@ -14,7 +14,7 @@ class News extends DB{
     $this->modal("<tr>
                     <td>最新消息資料：</td>
                     <td><textarea name='text' width='150px' height='80px'></textarea></td>
-                  </tr>");   
+                  </tr>","./api/add.php");   
     }
 
     //news的 back 分頁的內容

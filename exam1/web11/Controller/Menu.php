@@ -18,7 +18,7 @@ class Menu extends DB{
                   <tr>
                       <td>選單連結網址：</td>
                       <td><input type='text' name='href'></td>
-                  </tr>");    
+                  </tr>","./api/add.php");    
     }
 
     //menu的 back 分頁的內容

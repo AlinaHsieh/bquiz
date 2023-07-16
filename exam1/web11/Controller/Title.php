@@ -22,8 +22,19 @@ class Title extends DB{
              <td>標題區替代文字：</td>
              <td><input type='text' name='text'></td>
              </tr>";
-        $this->modal($form);
+        $this->modal($form,"./api/add.php");
     }
+
+    //  更新圖片按鈕的彈出視窗
+    public function update_img($id){
+        $form = "<tr>
+                 <td>標題區圖片：</td>
+                 <td><input type='file' name='img'></td>
+                 </tr>
+                 <input type='hidden' name='id' value='$id'>
+                 ";
+            $this->modal($form,"./api/update_img.php");
+        }
 
     //title的 back 分頁的內容
     public function list(){
