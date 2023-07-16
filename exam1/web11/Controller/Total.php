@@ -7,9 +7,7 @@ class Total extends DB{
     {
         parent::__construct('total');
     }
-    public function add_form(){
-        ?>
-        
-        <?php    
-        }
+function list(){
+    return $this->view("./view/total.php");
+}
 }
