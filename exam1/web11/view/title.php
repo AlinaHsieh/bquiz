@@ -1,5 +1,5 @@
-
-<table width="100%">
+    <form method="post" action="./api/update.php">
+        <table width="100%">
             <tbody>
                 <tr class="yel">
                     <td width="45%">網站標題</td>
@@ -37,9 +37,10 @@
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
-                    <input type="hidden" name="table" value="<?=$this->table?>">
-                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?<?=$this->table?>')" value="新增網站標題圖片"></td>
+                    <input type="hidden" name="table" value="<?= $this->table ?>">
+                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=<?= $this->table ?>')" value="新增網站標題圖片"></td>
                     <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
                 </tr>
             </tbody>
         </table>
+        </form>

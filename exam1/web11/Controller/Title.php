@@ -1,0 +1,32 @@
+<?php
+include_once "DB.php";
+
+class Title extends DB{
+
+    public $header = '網站標題管理';
+    public $add_header = '新增網站標題圖片';
+    public function __construct()
+    {
+        // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
+        // $this->table = 'title';
+        parent::__construct('title');
+    }
+
+    //title彈出視窗的分頁內容
+    public function add_form(){
+    $form = "<tr>
+             <td>標題區圖片：</td>
+             <td><input type='file' name='img'></td>
+             </tr>
+             <tr>
+             <td>標題區替代文字：</td>
+             <td><input type='text' name='text'></td>
+             </tr>";
+        $this->modal($form);
+    }
+
+    //title的 back 分頁的內容
+    public function list(){
+        $this->backend("./view/title.php");
+    }
+}
