@@ -23,6 +23,6 @@ class Menu extends DB{
 
     //menu的 back 分頁的內容
     public function list(){
-        $this->backend("./view/menu.php");
+        $this->view("./view/menu.php");
     }
 }

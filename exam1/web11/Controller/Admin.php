@@ -27,6 +27,6 @@ class Admin extends DB{
 
     //admin的 back 分頁的內容
     public function list(){
-        $this->backend("./view/admin.php");
+        $this->view("./view/admin.php");
     }
 }

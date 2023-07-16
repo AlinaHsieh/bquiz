@@ -185,14 +185,7 @@ class DB
     }
 
     //後台管理畫面(各分頁)模板
-    function backend($slot){
-    ?>
-    <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-        <p class="t cent botli"><?=$this->header?></p>
-        <form method="post" action="./api/update.php">
-            <?php include $slot;?>
-        </form>
-    </div>
-    <?php
+    function view($path){
+        include($path);
     }
 }

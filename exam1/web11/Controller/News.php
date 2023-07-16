@@ -19,6 +19,6 @@ class News extends DB{
 
     //news的 back 分頁的內容
     public function list(){
-        $this->backend("./view/news.php");
+        $this->view("./view/news.php");
     }
 }

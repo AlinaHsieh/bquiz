@@ -23,6 +23,6 @@ class Ad extends DB{
 
      //ad的 back 分頁的內容
      public function list(){
-        $this->backend("./view/ad.php");
+        $this->view("./view/ad.php");
     }
 }

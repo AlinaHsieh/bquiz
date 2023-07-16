@@ -1,3 +1,5 @@
+<div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
+    <p class="t cent botli"><?= $this->header ?></p>
     <form method="post" action="./api/update.php">
         <table width="100%">
             <tbody>
@@ -10,20 +12,20 @@
                 <?php
                 $rows = $this->all();
                 foreach ($rows as $row) {
-                // dd($row);
+                    // dd($row);
                 ?>
                     <tr>
 
                         <td>
-                            <textarea name="text[<?= $row['id']?>]" style='width:95%; height:60px'><?=$row['text']?></textarea>
+                            <textarea name="text[<?= $row['id'] ?>]" style='width:95%; height:60px'><?= $row['text'] ?></textarea>
                         </td>
                         <td>
-                            <input type="checkbox" name="sh[<?= $row['id']?>]" value="<?= $row['id']?>" <?=$row['sh']==1?"checked":""?>>
+                            <input type="checkbox" name="sh[<?= $row['id'] ?>]" value="<?= $row['id'] ?>" <?= $row['sh'] == 1 ? "checked" : "" ?>>
                         </td>
                         <td>
-                            <input type="checkbox" name="del[<?= $row['id']?>]" value="<?= $row['id']?>">
+                            <input type="checkbox" name="del[<?= $row['id'] ?>]" value="<?= $row['id'] ?>">
                         </td>
-                       
+
                     </tr>
                 <?php
                 }
@@ -33,11 +35,11 @@
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
-                    <input type="hidden" name="table" value="<?=$this->table?>">
-                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=<?=$this->table?>')" value="新增最新消息資料"></td>
+                    <input type="hidden" name="table" value="<?= $this->table ?>">
+                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=<?= $this->table ?>')" value="新增最新消息資料"></td>
                     <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
                 </tr>
             </tbody>
         </table>
-
     </form>
+    </div>

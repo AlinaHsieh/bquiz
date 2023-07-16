@@ -1,3 +1,5 @@
+<div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
+    <p class="t cent botli"><?= $this->header ?></p>
     <form method="post" action="./api/update.php">
         <table width="100%">
             <tbody>
@@ -18,18 +20,18 @@
                     <tr>
 
                         <td>
-                            <input type="text" name="text[<?= $row['id']?>]" value="<?= $row['text'] ?>" style='width:95%'>
+                            <input type="text" name="text[<?= $row['id'] ?>]" value="<?= $row['text'] ?>" style='width:95%'>
                         </td>
                         <td>
-                            <input type="text" name="href[<?= $row['id']?>]" value="<?= $row['href']?>" style='width:95%'>
+                            <input type="text" name="href[<?= $row['id'] ?>]" value="<?= $row['href'] ?>" style='width:95%'>
                         </td>
                         <td>
                         </td>
                         <td>
-                            <input type="checkbox" name="sh[<?= $row['id']?>]" value="<?= $row['id']?>" <?=($row['sh']==1)?"checked":""?>>
+                            <input type="checkbox" name="sh[<?= $row['id'] ?>]" value="<?= $row['id'] ?>" <?= ($row['sh'] == 1) ? "checked" : "" ?>>
                         </td>
                         <td>
-                            <input type="checkbox" name="del[<?= $row['id']?>]" value="<?= $row['id']?>">
+                            <input type="checkbox" name="del[<?= $row['id'] ?>]" value="<?= $row['id'] ?>">
                         </td>
                         <td>
                             <input type="button" value="編輯次選單">
@@ -43,11 +45,11 @@
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
-                    <input type="hidden" name="table" value="<?=$this->table?>">
-                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=<?=$this->table?>')" value="新增選單"></td>
+                    <input type="hidden" name="table" value="<?= $this->table ?>">
+                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=<?= $this->table ?>')" value="新增選單"></td>
                     <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
                 </tr>
             </tbody>
         </table>
-
     </form>
+</div>

@@ -38,6 +38,6 @@ class Title extends DB{
 
     //title的 back 分頁的內容
     public function list(){
-        $this->backend("./view/title.php");
+        $this->view("./view/title.php");
     }
 }

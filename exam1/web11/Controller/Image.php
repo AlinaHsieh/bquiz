@@ -32,6 +32,6 @@ class Image extends DB{
 
     //image的 back 分頁的內容
     public function list(){
-        $this->backend("./view/image.php");
+        $this->view("./view/image.php");
     }
 }

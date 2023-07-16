@@ -31,6 +31,6 @@ class Mvim extends DB{
 
     //mvim的 back 分頁的內容
     public function list(){
-        $this->backend("./view/mvim.php");
+        $this->view("./view/mvim.php");
     }
 }
