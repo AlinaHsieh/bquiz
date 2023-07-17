@@ -1,5 +1,5 @@
    <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-       <p class="t cent botli"><?= $this->header ?></p>
+       <p class="t cent botli"><?=$header?></p>
        <form method="post" action="./api/update.php">
                <table width="100%">
                    <tbody>
@@ -28,7 +28,7 @@
                                    <input type="checkbox" name="del[]" value="<?= $row['id'] ?>">
                                </td>
                                <td>
-                                   <input type="button" onclick="op('#cover','#cvr','./model/update_img.php?table=<?= $this->table ?>&id=<?= $row['id'] ?>')" value="更新圖片">
+                                   <input type="button" onclick="op('#cover','#cvr','./model/update_img.php?table=<?= $table ?>&id=<?= $row['id'] ?>')" value="更新圖片">
                                </td>
                            </tr>
                        <?php
@@ -39,8 +39,8 @@
                <table style="margin-top:40px; width:70%;">
                    <tbody>
                        <tr>
-                           <input type="hidden" name="table" value="<?= $this->table ?>">
-                           <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=<?= $this->table ?>')" value="新增網站標題圖片"></td>
+                           <input type="hidden" name="table" value="<?= $table ?>">
+                           <td width="200px"><input type="button" onclick="op('#cover','#cvr','./model/add_form.php?table=<?=$table?>')" value="新增網站標題圖片"></td>
                            <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
                        </tr>
                    </tbody>

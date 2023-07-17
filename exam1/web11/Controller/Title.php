@@ -41,8 +41,14 @@ class Title extends DB{
     //     $this->view("./view/title.php");
     // }
     public function list(){
-        $rows = $this->all();
-        $this->view("./view/title.php",['rows'=>$rows]);//帶第二個參數(陣列)
+        $data=[
+            'rows' => $this->all(),
+            'header'=>'網站標題管理',
+            'table'=>$this->table,
+            'addButton'=>'新增網站標題圖片'
+
+        ];
+        $this->view("./view/title.php",$data); //帶第二個參數(陣列)
         //$this->view會在DB的view()產生$path,$arg陣列內容,
     }
 
