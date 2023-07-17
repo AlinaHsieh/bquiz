@@ -34,7 +34,7 @@
                             <input type="checkbox" name="del[<?= $row['id'] ?>]" value="<?= $row['id'] ?>">
                         </td>
                         <td>
-                            <input type="button" value="編輯次選單">
+                            <input type="button" onclick="op('#cover','#cvr','./model/edit_submenu.php?main_id=<?=$row['id']?>')"  value="編輯次選單">
                         </td>
                     </tr>
                 <?php

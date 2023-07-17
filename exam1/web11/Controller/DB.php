@@ -30,10 +30,11 @@ class DB
                 foreach ($arg[0] as $key => $value) {  //陣列內容字串化
                     $tmp[] = "`$key`='$value'"; //把條件做成暫時的字串陣列
                 }
-                $sql = $sql . "where" . join("&&", $tmp);     //如果是陣列要接條件句
+                $sql = $sql . " where" . join("&&", $tmp);     //如果是陣列要接條件句
+                // echo $sql;
+
             } else {
                 $sql = $sql . $arg[0];
-                // echo $sql;
 
             }
             if (isset($arg[1])) { //如果有第二個參數 -> 字串
