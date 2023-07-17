@@ -192,9 +192,14 @@ class DB
     }
 
     //後台管理畫面(各分頁)模板
-    function view($path)
+    // function view($path)
+    // {
+    //     include($path);
+    // }
+    function view($path,$arg=[])
     {
-        include($path);
+        extract($arg); //extract['rows'=>$rows]這個陣列，會得到key值rows轉換成變數$rows
+        include($path); //得到$rows此變數會被帶入include的分頁中,分頁不用再寫$rows = $this->all()這句,達到邏輯&顯示頁面的區分
     }
 
     //分頁function

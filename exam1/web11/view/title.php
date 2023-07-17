@@ -11,7 +11,7 @@
                            <td></td>
                        </tr>
                        <?php
-                        $rows = $this->all();
+                        // $rows = $this->all(); //這行回到class裡面處理撈資料
                         foreach ($rows as $row) {
                         ?>
                            <tr>

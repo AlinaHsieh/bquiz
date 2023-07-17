@@ -37,7 +37,14 @@ class Title extends DB{
         }
 
     //title的 back 分頁的內容
+    // public function list(){
+    //     $this->view("./view/title.php");
+    // }
     public function list(){
-        $this->view("./view/title.php");
+        $rows = $this->all();
+        $this->view("./view/title.php",['rows'=>$rows]);//帶第二個參數(陣列)
+        //$this->view會在DB的view()產生$path,$arg陣列內容,
     }
+
+    
 }
