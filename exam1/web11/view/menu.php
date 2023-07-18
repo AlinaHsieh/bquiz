@@ -15,6 +15,7 @@
                 </tr>
                 <?php
                 $rows = $this->all(['main_id'=>0]);
+                dd($rows);
                 foreach ($rows as $row) {
                 ?>
                     <tr>
@@ -25,7 +26,8 @@
                         <td>
                             <input type="text" name="href[<?= $row['id'] ?>]" value="<?= $row['href'] ?>" style='width:95%'>
                         </td>
-                        <td>
+                        <td style="text-align:center">
+                            <?=$this->count(['main_id'=>$row['id']])?>
                         </td>
                         <td>
                             <input type="checkbox" name="sh[<?= $row['id'] ?>]" value="<?= $row['id'] ?>" <?= ($row['sh'] == 1) ? "checked" : "" ?>>

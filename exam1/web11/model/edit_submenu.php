@@ -13,6 +13,7 @@ include_once "../base.php";
     <?php
     //  撈出資料的語法：select * from `menu` where `main_id` = $_GET['main_id'];
     $rows = $Menu->all(['main_id'=>$_GET['main_id']]);
+    // dd($rows);
     foreach($rows as $row){
     ?>
     <tr>

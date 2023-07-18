@@ -25,4 +25,12 @@ class Menu extends DB{
     public function list(){
         $this->view("./view/menu.php");
     }
+    // public function list(){
+    //     $rows = $this->all(['main_id'=>0]); //拿到主選單的列表
+    //     foreach($rows as $idx =>$row){ //拆每一筆主選單去計算次選單的數量
+    //         $row['subs'] = $this->count(['main_id'=>$row['id']]); // 新增一個$row['subs']的變數是計算次選單數量
+    //         $row[$idx]=$row; //把$row['subs']及得到的結果塞回$row陣列
+    //     }
+    //     $this->view("./view/menu.php",['rows'=>$rows]);
+    }
 }
