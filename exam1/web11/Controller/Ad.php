@@ -25,4 +25,18 @@ class Ad extends DB{
      public function list(){
         $this->view("./view/ad.php");
     }
+    
+     //前台顯示跑馬燈
+     function show(){
+        $rows = $this->all(['sh'=>1]);
+        // $str='';
+        // foreach($rows as $row){
+        //     $str .= "&nbsp;" . $row['text'];
+        // }
+        // return $str;
+        $str = join('&nbsp;&nbsp;',array_column($rows,'text'));
+        return $str;
+     }
+
+
 }
