@@ -5,11 +5,17 @@ class Title extends DB{
 
     public $header = '網站標題管理';
     public $add_header = '新增網站標題圖片';
+    public $title;
+    public $img;
+
     public function __construct()
     {
         // $this->pdo = new PDO($this->dsn, $this->user, $this->pw);
         // $this->table = 'title';
         parent::__construct('title');
+        $this->title = $this->find(['sh'=>1])['text'];
+        $this->img = $this->find(['sh'=>1])['img'];
+
     }
 
     //title彈出視窗的分頁內容
@@ -52,5 +58,10 @@ class Title extends DB{
         //$this->view會在DB的view()產生$path,$arg陣列內容,
     }
 
-    
+    //顯示網頁標題圖片
+    public function show(){
+        $row=$this->find(['sh'=>1]);
+        return ['title'=>$row['text'],'img'=>$row['img']];
+        //只return 一個陣列(包含兩個資料:title跟img)
+    }
 }
