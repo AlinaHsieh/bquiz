@@ -14,7 +14,7 @@
                     <td></td>
                 </tr>
                 <?php
-                $rows = $this->all();
+                $rows = $this->all(['main_id'=>0]);
                 foreach ($rows as $row) {
                 ?>
                     <tr>
