@@ -32,5 +32,5 @@ class Menu extends DB{
     //         $row[$idx]=$row; //把$row['subs']及得到的結果塞回$row陣列
     //     }
     //     $this->view("./view/menu.php",['rows'=>$rows]);
-    }
+    // }
 }

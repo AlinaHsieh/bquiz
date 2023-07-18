@@ -7,6 +7,11 @@ class Total extends DB{
     {
         parent::__construct('total');
     }
+
+function show(){
+return $this->find(1)['total'];
+}  
+
 function list(){
     return $this->view("./view/total.php");
 }
