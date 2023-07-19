@@ -20,7 +20,17 @@ class Menu extends DB{
                       <td><input type='text' name='href'></td>
                   </tr>","./api/add.php");    
     }
-
+    //顯示前台主選單
+    public function show(){
+        $rows = $this->all(["sh"=>1, "main_id"=>0]); //撈出主選單資料
+        foreach($rows as $idx =>$row){  //拆主選單的陣列
+            if($this->count(['main_id'=>$row['id']])>0){  //是否有main_id等於id的值(若有表示有次選單)
+                $subs=$this->all(['main_id'=>$row['id']]);  //撈出次選單資料
+                $rows[$idx]['subs'] = $subs; //把得到的$subs塞回$rows(以$idx對應)的subs陣列中
+            } //如果沒有次選單，就不做處理
+        }
+        return $rows; //會拿到有subs的$rows,前台index可判斷若$rows有$subs此變數，則撈出次選單
+    }
     //menu的 back 分頁的內容
     public function list(){
         $this->view("./view/menu.php");

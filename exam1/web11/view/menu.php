@@ -15,7 +15,7 @@
                 </tr>
                 <?php
                 $rows = $this->all(['main_id'=>0]);
-                dd($rows);
+                // dd($rows);
                 foreach ($rows as $row) {
                 ?>
                     <tr>
