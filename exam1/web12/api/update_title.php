@@ -1,5 +1,5 @@
 <?php include_once "../base.php";
-// dd($_POST);
+dd($_POST);
 foreach($_POST['text'] as $id =>$text){
 
     if(!empty($_POST['del']) && in_array($id,$_POST['del'])){

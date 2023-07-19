@@ -6,6 +6,7 @@ class DB
     protected $user = "root";
     protected $table;
     protected $pdo;
+    protected $add_header;
 
     function __construct($table)
     {
@@ -70,7 +71,8 @@ class DB
         return $this->pdo->exec($sql);
     }
 
-    function del($arg){  //刪除一筆或多筆
+    function del($arg)
+    {  //刪除一筆或多筆
         $sql = "delete from $this->table ";
         if (is_array($arg)) {
             foreach ($arg as $key => $value) {
@@ -78,8 +80,8 @@ class DB
             }
             $sql = $sql . " where " . join(" && ", $tmp);
             // echo $sql;
-        }else if(is_numeric($arg)){
-            $sql = $sql . "where `id` = ". $arg;
+        } else if (is_numeric($arg)) {
+            $sql = $sql . "where `id` = " . $arg;
             // echo $sql;
         } else {
             $sql = $sql . $arg;
@@ -134,7 +136,27 @@ class DB
 
         return $this->pdo->query($sql)->fetchColumn();
     }
+
+    protected function modal($slot, $action)
+    {
+    ?>
+        <h3><?= $this->add_header ?></h3>
+        <hr>
+        <form action="<?= $action ?>" method="post" enctype="multipart/form-data">
+            <table>
+                <?= $slot ?>
+                <tr>
+                    <input type="hidden" name="table" value="<?= $this->table ?>">
+                    <input type="submit" value="新增">
+                    <input type="reset" value="重置">
+                </tr>
+            </table>
+        </form>
+
+    <?php
+    }
 }
+
 
 function dd($array)
 {
@@ -163,18 +185,18 @@ class Title extends DB
     public function __construct()
     {
         parent::__construct('title');
-        
     }
-    function add_form(){
-     ?>
+    function add_form()
+    {
+    ?>
         <div>
-           標題區圖片：<input type="file" name="img">
+            標題區圖片：<input type="file" name="img">
         </div>
         <div>
             標題區替代文字<input type="text" name="text">
         </div>
-     
-     <?php
+
+    <?php
     }
 }
 
@@ -187,12 +209,13 @@ class Ad extends DB
         $this->header = '動態文字廣告';
         $this->add_header = '新增動態文字廣告';
     }
-    function add_form(){
-        ?>
-    <div>
-    動態文字廣告<input type="text" name="text">
-    </div>
-        <?php
+    function add_form()
+    {
+    ?>
+        <div>
+            動態文字廣告<input type="text" name="text">
+        </div>
+    <?php
     }
 }
 
@@ -205,21 +228,22 @@ class Admin extends DB
         $this->header = '管理者帳號管理';
         $this->add_header = '新增管理者帳號';
     }
-    function add_form(){
-        ?>
-    <div>
-        <td>帳號：</td>
-        <td><input type="text" name="acc"></td>
-    </div>
-    <div>
-        <td>密碼：</td>
-        <td><input type="password" name="pw"></td>
-        
-    </div>
-    <div>
-        確認密碼：<input type="password" name="pw2">
-    </div>
-        <?php
+    function add_form()
+    {
+    ?>
+        <div>
+            <td>帳號：</td>
+            <td><input type="text" name="acc"></td>
+        </div>
+        <div>
+            <td>密碼：</td>
+            <td><input type="password" name="pw"></td>
+
+        </div>
+        <div>
+            確認密碼：<input type="password" name="pw2">
+        </div>
+    <?php
     }
 }
 
@@ -232,18 +256,19 @@ class Menu extends DB
         $this->header = '選單管理';
         $this->add_header = '新增主選單';
     }
-    function add_form(){
-        ?>
-    <div>
-        <td>主選單名稱：</td>
-        <td><input type="text" name="text"></td>
-    </div>
-    <div>
-        <td>選單連結網址：</td>
-        <td><input type="text" name="href"></td>
-        
-    </div>
-        <?php
+    function add_form()
+    {
+    ?>
+        <div>
+            <td>主選單名稱：</td>
+            <td><input type="text" name="text"></td>
+        </div>
+        <div>
+            <td>選單連結網址：</td>
+            <td><input type="text" name="href"></td>
+
+        </div>
+    <?php
     }
 }
 
@@ -256,12 +281,13 @@ class Image extends DB
         $this->header = '校園映像資料管理';
         $this->add_header = '新增校園映像圖片';
     }
-    function add_form(){
-        ?>
-    <div>
-        校園映像圖片：<input type="file" name="img">
-    </div>
-        <?php
+    function add_form()
+    {
+    ?>
+        <div>
+            校園映像圖片：<input type="file" name="img">
+        </div>
+    <?php
     }
 }
 
@@ -284,12 +310,13 @@ class Mvim extends DB
         $this->header = '動畫圖片管理';
         $this->add_header = '新增動畫圖片';
     }
-    function add_form(){
-        ?>
-     <div>
-        動畫圖片：<input type="file" name="img">
-    </div>
-        <?php
+    function add_form()
+    {
+    ?>
+        <div>
+            動畫圖片：<input type="file" name="img">
+        </div>
+    <?php
     }
 }
 
@@ -312,16 +339,17 @@ class News extends DB
         $this->header = '最新消息管理';
         $this->add_header = '新增最新消息資料';
     }
-    function add_form(){
-        ?>
-      <div>
-      <td>
-      最新消息資料
-      </td>
-      <td>
-         <textarea name="text" style="width: 400px; height:200px;"></textarea>
-      </td>
-        <?php
+    function add_form()
+    {
+    ?>
+        <div>
+            <td>
+                最新消息資料
+            </td>
+            <td>
+                <textarea name="text" style="width: 400px; height:200px;"></textarea>
+            </td>
+    <?php
     }
 }
 
@@ -336,4 +364,3 @@ $News = new News();
 $Admin = new Admin();
 $Menu = new Menu();
 // $Total = new DB("total");
-
