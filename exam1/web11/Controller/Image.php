@@ -44,5 +44,8 @@ class Image extends DB{
             echo "</div>";
         }
     }
+    public function num(){
+        return $this->count(['sh'=>1]);
+    }
 
 }

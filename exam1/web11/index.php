@@ -106,14 +106,14 @@
 					</div>
 					<script>
 						var nowpage = 0,
-							num = 0;
+							num = <?=$Image->num()?>;
 
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) {
 								nowpage--;
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							if (x == 2 && (nowpage < num- 3)) { //修正原始程式bug
 								nowpage++;
 							}
 							$(".im").hide() //每張圖片上都有 class='im'
