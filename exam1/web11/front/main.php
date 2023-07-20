@@ -2,22 +2,7 @@
 	<?php include "marquee.php" ?>
 	<div style="height:32px; display:block;"></div>
 	<!--正中央-->
-	<script>
-		var lin = new Array();
-		var now = 0;
-		if (lin.length > 1) {
-			setInterval("ww()", 3000);
-			now = 1;
-		}
-
-		function ww() {
-			$("#mwww").html("<embed loop=true src='" + lin[now] + "' style='width:99%; height:100%;'></embed>")
-			//$("#mwww").attr("src",lin[now])
-			now++;
-			if (now >= lin.length)
-				now = 0;
-		}
-	</script>
+	
 	<div style="width:100%; padding:2px; height:290px;">
 		<div id="mwww" loop="true" style="width:100%; height:100%;">
 			<div style="width:99%; height:100%; position:relative;" class="cent">沒有資料</div>
@@ -44,3 +29,27 @@
 		</script>
 	</div>
 </div>
+<script>
+		var lin = new Array();
+		<?php
+		$Mvim->show();
+		// $rows = $Mvim->all(['sh'=>1]);
+		// foreach($rows as $row){
+		// 	echo "lin.push('./upload/{$row['img']}');";
+		// }
+		?>
+		var now = 0;
+		if (lin.length > 1) {
+			setInterval("ww()", 3000);
+			// now = 1;
+		}
+
+		function ww() {
+			$("#mwww").html("<embed loop=true src='" + lin[now] + "' style='width:99%; height:100%;'></embed>")
+			//$("#mwww").attr("src",lin[now])
+			now++;
+			if (now >= lin.length)
+				now = 0;
+		}
+		ww();
+	</script>

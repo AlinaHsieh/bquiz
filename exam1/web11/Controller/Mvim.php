@@ -33,4 +33,12 @@ class Mvim extends DB{
     public function list(){
         $this->view("./view/mvim.php");
     }
+
+    function show(){
+        $rows = $this->all(['sh'=>1]);
+        foreach($rows as $row){
+            echo "lin.push('./upload/{$row['img']}');";
+        }
+    }
+
 }

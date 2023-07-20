@@ -168,3 +168,11 @@ input:focus,button:focus
 	cursor:pointer;
 	text-decoration:none;
 }
+.im img{
+	width:150px;
+	height:103px;
+}
+.im{
+	text-align: center;
+	margin: 5px;
+}

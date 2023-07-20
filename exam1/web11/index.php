@@ -92,6 +92,18 @@
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="cent" onclick="pp(1)">
+					<img src="./icon/up.jpg" alt="">
+					</div>
+						<!-- <div class="im" id="ssaa0">圖0</div>
+						<div class="im" id="ssaa1">圖1</div>
+						<div class="im" id="ssaa2">圖2</div>
+						<div class="im" id="ssaa3">圖3</div>
+						<div class="im" id="ssaa4">圖4</div> -->
+						<?= $Image->show()?>
+					<div class="cent" onclick="pp(2)">
+					<img src="./icon/dn.jpg" alt="">
+					</div>
 					<script>
 						var nowpage = 0,
 							num = 0;
@@ -104,7 +116,7 @@
 							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
 								nowpage++;
 							}
-							$(".im").hide()
+							$(".im").hide() //每張圖片上都有 class='im'
 							for (s = 0; s <= 2; s++) {
 								t = s * 1 + nowpage * 1;
 								$("#ssaa" + t).show()
