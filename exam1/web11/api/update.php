@@ -9,7 +9,7 @@ if(isset($_POST['text'])){
 }else if($table == 'admin'){
     $rows = $_POST['acc'];
 }else{
-    $rows =array_column($$db->all(),'img','id');
+    $rows =$_POST['id'];
 }
 
 foreach($rows as $id => $text){
