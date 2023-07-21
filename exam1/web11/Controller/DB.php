@@ -223,17 +223,17 @@ class DB
         // if(($now-1)>=1){
             if(($this->links['now']-1)>=1){  //改成寫在物件裡面
             $prev = $this->links['now']-1;
-            echo "<a href='?do=image&page=$prev'> &lt;</a>";
+            echo "<a href='?do=$this->table&page=$prev'> &lt;</a>";
             }
 
             for($i=1;$i<=$this->links['pages'];$i++){
             $fontsize=($i==$this->links['now'])?"24px":"16px";
-            echo "<a href='?do=image&page=$i' style='font-size:$fontsize'> $i </a>";
+            echo "<a href='?do=$this->table&page=$i' style='font-size:$fontsize'> $i </a>";
             }
 
             if(($this->links['now']+1)<=$this->links['pages']){
                 $next = $this->links['now']+1;
-                echo "<a href='?do=image&page=$next'> &gt;</a>";
+                echo "<a href='?do=$this->table&page=$next'> &gt;</a>";
             }
     }
 }
