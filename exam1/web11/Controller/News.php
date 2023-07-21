@@ -23,20 +23,27 @@ class News extends DB{
     }
 
     public function show(){
-        $rows = $this->all(['sh'=>1]);
+        $rows = $this->all(['sh'=>1],'limit 5');
+        echo "<ol class='ssaa'>";
         foreach($rows as $row){
-            echo $row;
+            echo "<li>";
+            echo mb_substr($row['text'],0,15);
+                echo "<span class='all' style='display:none'>";
+                echo $row['text'];
+                echo "</span>";
+            echo "</li>";
         }
+        echo "</ol>";
     }
 
     public function num(){ //計算有多少筆最新消息要被顯示
         return $this->count(['sh'=>1]);
     }
 
-    public function more(){
+    public function more(){ //最新消息區若資料大於5比則顯示more
         if($this->count(['sh'=>1])>5){
             echo "<a href='?do=news' style='float:right'>More...</a>";
         }
-
     }
+
 }
