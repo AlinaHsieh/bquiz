@@ -21,4 +21,22 @@ class News extends DB{
     public function list(){
         $this->view("./view/news.php");
     }
+
+    public function show(){
+        $rows = $this->all(['sh'=>1]);
+        foreach($rows as $row){
+            echo $row;
+        }
+    }
+
+    public function num(){ //計算有多少筆最新消息要被顯示
+        return $this->count(['sh'=>1]);
+    }
+
+    public function more(){
+        if($this->count(['sh'=>1])>5){
+            echo "<a href='?do=news' style='float:right'>More...</a>";
+        }
+
+    }
 }
