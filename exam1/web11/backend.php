@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<div id="main">
-		<a title="<?=$Title->title?>" href="?">
+		<a title="<?=$Title->title?>" href="index.php">
 			<div class="ti" style="background:url('./upload/<?=$Title->img?>'); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
@@ -73,7 +73,7 @@
 					<tbody>
 						<tr>
 							<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
-							<td><button onclick="location.href='index.php?do=login'" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+							<td><button onclick="location.href='./api/logout.php'" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
 						</tr>
 					</tbody>
 				</table>

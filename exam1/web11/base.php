@@ -29,6 +29,8 @@ function q($sql){
 // $total = new DB('total');
 // dd($total->find(1));
 // echo $total->sum('id');
+session_start();
+
 
 $Total = new Total;
 $Bottom = new Bottom;
@@ -39,6 +41,8 @@ $Mvim = new Mvim;
 $News = new News;
 $Admin = new Admin;
 $Menu = new Menu;
+
+$Total->online();
 
 // $Total = new DB("total");
 // $Bottom = new DB("bottom");
