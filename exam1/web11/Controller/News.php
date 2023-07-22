@@ -51,7 +51,7 @@ class News extends DB{
         $start = $this->links['start']+1;
         echo "<ol class='ssaa' start='$start'>";
         foreach($rows as $row){
-            echo "<li>";
+            echo "<li class='sswww'>";
             echo mb_substr($row['text'],0,15);
             echo "<span class='all' style='display:none'>";
             echo $row['text'];

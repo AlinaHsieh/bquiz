@@ -176,3 +176,9 @@ input:focus,button:focus
 	text-align: center;
 	margin: 5px;
 }
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
