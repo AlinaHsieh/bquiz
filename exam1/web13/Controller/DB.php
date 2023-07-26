@@ -51,9 +51,12 @@ class DB
         if(isset($arg['id'])){
             $tmp = $this->a2s($arg);
             $sql = "update $this->table set ". join(",",$tmp) . " where `id` = '{$arg['id']}'";
+        // echo $sql;
         }else{
             $keys=array_keys($arg);
-            $sql = "insert into $this->table (`".join("`,`",$keys)."`) valus('".join("','",$arg)."')";
+            // dd($keys);
+            $sql = "insert into $this->table (`".join("`,`",$keys)."`) values('".join("','",$arg)."')";
+            // echo $sql;
         }
         return $this->pdo->exec($sql);
     }
@@ -148,6 +151,8 @@ class DB
 
         return $html;
     }
+
+
 }
 
 

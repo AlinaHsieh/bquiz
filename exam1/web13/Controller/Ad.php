@@ -11,5 +11,9 @@ class Ad extends DB{
         parent::__construct('ad');
     }
 
+public function list(){
+   $this->view("./view/ad.php");
+
+}
 
 }

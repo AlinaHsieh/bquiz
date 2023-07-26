@@ -88,12 +88,14 @@
 
 				<?php
 				$do = $_GET['do']??"title";
-				$file = "./view/" . $do . ".php";
-				if(file_exists($file)){
-					include $file;
-				}else{
-					include "./view/title.php";
-				}
+				$table = ucfirst($do);
+				$$table->list();
+				// $file = "./view/" . $do . ".php";
+				// if(file_exists($file)){
+				// 	include $file;
+				// }else{
+				// 	include "./view/title.php";
+				// }
 
 				?>
 

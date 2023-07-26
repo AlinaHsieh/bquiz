@@ -11,6 +11,19 @@ class Title extends DB{
     public function __construct()
     {
         parent::__construct('title');
+        // $this->title = $this->find(['sh'=>1])['text'];
+        // $this->img = $this->find(['sh'=>1])['img'];
     }
 
+    public function list(){
+        // $data = [
+        //     'rows'=>$this->all(),
+        //     'header'=>'網站標題管理',
+        //     'table'=>$this->table,
+        //     'addButton'=>'新增網站標題圖片'
+        // ];
+        // $this->view("./view/title.php",$data);
+        $this->view("./view/title.php");
+
+    }
 }
