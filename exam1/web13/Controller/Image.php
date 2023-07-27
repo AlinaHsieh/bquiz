@@ -10,5 +10,7 @@ class Image extends DB{
         parent::__construct('image');
     }
 
-
+    public function list(){
+        $this->view("./view/image.php");
+    }
 }

@@ -17,33 +17,35 @@ class DB
         $this->table = $table;
     }
 
-    protected function all(...$arg){
+     function all(...$arg){
        $sql = $this->sql_all(" select * from $this->table ",...$arg);
+    //    echo $sql;
        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-    protected function count(...$arg){
+     function count(...$arg){
         $sql = $this->sql_all(" select count(*) from $this->table",...$arg);
         return $this->pdo->query($sql)->fetchColumn();
     }
 
-    protected function find($arg){
+     function find($arg){
         $sql = $this->sql_one(" select * from $this->table ", $arg);
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
-    protected function del($arg){
+     function del($arg){
         $sql = $this->sql_one(" delete from $this->table ", $arg);
+        // echo $sql;
         return $this->pdo->exec($sql);
     }
 
-    protected function max($col,...$arg){
+     function max($col,...$arg){
         return $this->math('max',$col,...$arg);
     }
 
-    protected function min($col,...$arg){
+     function min($col,...$arg){
         return $this->math('min',$col,...$arg);
     }
-    protected function sum($col,...$arg){
+     function sum($col,...$arg){
         return $this->math('sum',$col,...$arg);
     }
 
@@ -62,7 +64,7 @@ class DB
     }
 
     //tools
-    protected function a2s($array)
+     function a2s($array)
     {
         foreach ($array as $key => $val) {
             if ($key != 'id') {
@@ -72,7 +74,7 @@ class DB
         return $tmp;
     }
 
-    protected function sql_all($sql,...$arg){
+     function sql_all($sql,...$arg){
         if(!empty($arg)){
             if(isset($arg[0])){
                 if(is_array($arg)){
@@ -89,17 +91,18 @@ class DB
         return $sql;
     }
 
-    protected function sql_one($sql,$arg){
+     function sql_one($sql,$arg){
         if(is_array($arg)){
             $tmp=$this->a2s($arg);
             $sql = $sql . " where " .join(" && ",$tmp );
+
         }else{
             $sql = $sql . " where `id` = '$arg'";
         }
         return $sql;
     }
 
-    protected function math($math,$col,...$arg){
+     function math($math,$col,...$arg){
         $sql = "select $math($col) from $this->table ";
         $sql = $this->sql_all($sql,...$arg);
 

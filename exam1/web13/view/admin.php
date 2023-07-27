@@ -1,6 +1,6 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli"><?=$Admin->header?></p>
-    <form method="post" action="?do=tii">
+    <form method="post" action="">
         <table width="100%">
             <tbody>
                 <tr class="yel">

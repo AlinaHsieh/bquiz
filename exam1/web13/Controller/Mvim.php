@@ -11,4 +11,8 @@ class Mvim extends DB{
         parent::__construct('mvim');
     }
 
+    public function list(){
+        $this->view("./view/mvim.php");
+    }
+
 }
