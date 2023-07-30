@@ -98,6 +98,7 @@ class DB
 
         }else{
             $sql = $sql . " where `id` = '$arg'";
+            // echo "$sql";
         }
         return $sql;
     }

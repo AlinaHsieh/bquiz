@@ -9,4 +9,9 @@ class Admin extends DB{
     {
         parent::__construct('admin');
     }
+
+    function list(){
+        $this->view("./view/admin.php");
+
+    }
 }

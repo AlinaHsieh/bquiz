@@ -10,4 +10,7 @@ class News extends DB{
         parent::__construct('news');
     }
 
+    public function list(){
+        $this->view("./view/news.php");
+    }
 }

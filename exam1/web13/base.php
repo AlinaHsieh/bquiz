@@ -8,6 +8,8 @@ include_once __DIR__ . "/Controller/Image.php";
 include_once __DIR__ . "/Controller/News.php";
 include_once __DIR__ . "/Controller/Admin.php";
 include_once __DIR__ . "/Controller/Menu.php";
+include_once __DIR__ . "/Controller/Total.php";
+include_once __DIR__ . "/Controller/Bottom.php";
 
 function to($url){
     header("location:" . $url);
@@ -26,3 +28,5 @@ $Image = new Image;
 $News = new News;
 $Admin = new Admin;
 $Menu = new Menu;
+$Total = new Total;
+$Bottom = new Bottom;

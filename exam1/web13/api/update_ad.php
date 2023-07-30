@@ -9,7 +9,6 @@ foreach($_POST['text'] as $id => $text){
       $row = $Ad->find($id);
       $row['text'] = $text;
       $row['sh'] = (!empty($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
-      
       $Ad->save($row);
     }
 
