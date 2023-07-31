@@ -9,4 +9,8 @@ class Menu extends DB{
     {
         parent::__construct('menu');
     }
+
+    function List(){
+        $this->view("./view/menu.php");
+    }
 }
