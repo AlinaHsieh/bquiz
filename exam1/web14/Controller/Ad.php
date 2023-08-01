@@ -12,4 +12,10 @@ class Ad extends DB{
     public function list(){
         $this->view("./view/ad.php");
     }
+
+    public function show(){
+        $rows = $this->all(['sh'=>1]);
+        $str = join('&nbsp;&nbsp;',array_column($rows,'text'));
+        return $str;
+    }
 }

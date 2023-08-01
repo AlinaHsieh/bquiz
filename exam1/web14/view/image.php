@@ -10,12 +10,12 @@
                     <td></td>
                 </tr>
                 <?php
-                $rows = $this->all();
+                $rows = $this->paginate(3);
                 foreach ($rows as $row) {
 
                 ?>
                     <tr class="">
-                        <td width="45%"><img src="./upload/<?= $row['img']; ?>" width="120px"></td>
+                        <td width="45%"><img src="./upload/<?= $row['img']; ?>" width="120px" height="80px"></td>
                         <td width="7%"><input type="checkbox" name="sh[<?= $row['id']; ?>]" value="<?= $row['id'];?>" <?=$row['sh']==1?"checked":"";?>></td>
                         <td width="7%"><input type="checkbox" name="del[<?= $row['id']; ?>]" value="<?= $row['id']; ?>"></td>
                         <input type="hidden" name="id[<?= $row['id']; ?>]" value="<?= $row['id']; ?>">
@@ -26,6 +26,11 @@
                 ?>
             </tbody>
         </table>
+         <div style="text-align:center">
+            <?php
+            echo $this->links();
+            ?>
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
@@ -36,6 +41,6 @@
                 </tr>
             </tbody>
         </table>
-
+       
     </form>
 </div>

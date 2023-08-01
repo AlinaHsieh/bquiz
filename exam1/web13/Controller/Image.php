@@ -13,4 +13,18 @@ class Image extends DB{
     public function list(){
         $this->view("./view/image.php");
     }
+
+    function show(){
+        $rows = $this->all(['sh'=>1]);
+        foreach($rows as $idx => $row){
+        echo "<div class='im cent' id='ssaa{$idx}'>";
+        echo "<img src='./upload/{$row['img']}' style='width:150px;height:103px;border:3px solid orange;'>";
+        echo "</div>";
+        }
+    }
+
+    function num(){
+        return $this->count(['sh'=>1]);
+    }
+   
 }

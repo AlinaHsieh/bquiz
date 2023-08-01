@@ -14,4 +14,8 @@ class Title extends DB{
     public function list(){
         $this->view("./view/title.php");
     }
+    function show(){
+        $rows = $this->find(['sh'=>1]);
+        return $rows;
+    }
 }

@@ -10,7 +10,7 @@
                     <td width=""></td>
                 </tr>
                 <?php
-                $rows= $this->all();
+                $rows= $this->paginate(3);
                 foreach($rows as $row){
                 ?>
                    <tr class="">
@@ -25,6 +25,9 @@
                 ?>
             </tbody>
         </table>
+        <div class="cent">
+            <?php echo $this->links(); ?>
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
