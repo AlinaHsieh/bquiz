@@ -1,13 +1,11 @@
 <div class="di" style="height:540px; border:#999 1px solid; width:53.2%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-<?php include_once "marquee.php"; ?>
+    <?php include_once "marquee.php"; ?>
 
     <div style="height:32px; display:block;"></div>
     <!--正中央-->
     <script>
-        
-
         var lin = new Array();
-        <?=$Mvim->show();?>
+        <?= $Mvim->show(); ?>
         var now = 0;
         if (lin.length > 1) {
             setInterval("ww()", 3000);
@@ -19,7 +17,7 @@
             now++;
             if (now >= lin.length)
                 now = 0;
-            
+
         }
         ww();
     </script>
@@ -30,8 +28,10 @@
     </div>
     <div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
         <span class="t botli">最新消息區
+        <?=$News->more();?>
         </span>
         <ul class="ssaa" style="list-style-type:decimal;">
+            <?= $News->show();?>
         </ul>
         <div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
         <script>
