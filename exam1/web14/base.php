@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once __DIR__ . "/Controller/Title.php";
 include_once __DIR__ . "/Controller/Ad.php";
 include_once __DIR__ . "/Controller/Mvim.php";
@@ -28,3 +29,5 @@ $Bottom = new Bottom;
 $News = new News;
 $Admin = new Admin;
 $Menu = new Menu;
+
+$Total->online();

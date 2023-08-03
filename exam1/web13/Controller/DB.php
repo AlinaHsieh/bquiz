@@ -29,6 +29,7 @@ class DB
 
      function find($arg){
         $sql = $this->sql_one(" select * from $this->table ", $arg);
+        
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -53,12 +54,12 @@ class DB
         if(isset($arg['id'])){
             $tmp = $this->a2s($arg);
             $sql = "update $this->table set ". join(",",$tmp) . " where `id` = '{$arg['id']}'";
-        // echo $sql;
+        echo $sql;
         }else{
             $keys=array_keys($arg);
             // dd($keys);
             $sql = "insert into $this->table (`".join("`,`",$keys)."`) values('".join("','",$arg)."')";
-            // echo $sql;
+             echo $sql;
         }
         return $this->pdo->exec($sql);
     }

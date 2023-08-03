@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 
 include_once __DIR__ . "/Controller/Title.php";
 include_once __DIR__ . "/Controller/Ad.php";
@@ -30,3 +30,4 @@ $Admin = new Admin;
 $Menu = new Menu;
 $Total = new Total;
 $Bottom = new Bottom;
+$Total->online();
