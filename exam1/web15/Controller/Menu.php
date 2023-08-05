@@ -25,4 +25,23 @@ class Menu extends DB{
          </tr>";
         return $form;
     }
+
+    function show(){
+        $rows = $this->all(['sh'=>1,'main_id'=>0]);
+        foreach($rows as $id => $row){
+            if($this->count(['main_id'=>$row['id']])>0){
+            $subs = $this->all(['main_id'=>$row['id']]);
+            $rows[$id]['subs'] = $subs;	
+            }
+        }
+        return $rows;
+    }
+
+    function add_submenu(){
+        $rows = $this->all(['main_id'=>$_GET['main_id']]);
+        foreach($rows as $row){
+            return $row;
+        }
+    }
+
 }

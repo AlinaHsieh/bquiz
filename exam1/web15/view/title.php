@@ -24,6 +24,7 @@
                     <td width="23%"><input type="text" name="text[<?=$row['id']?>]" value="<?=$row['text']?>"></td>
                     <td width="7%"><input type="radio" name="sh" value="<?=$row['id']?>" <?=$row['sh']==1?"checked":""?>></td>
                     <td width="7%"><input type="checkbox" name="del[<?=$row['id']?>]" value="<?=$row['id']?>"></td>
+                    <td><input type="button" onclick="op('#cover','#cvr','./modal/update_img.php?table=<?= $this->table ?>&id=<?=$row['id']?>')" value="更換圖片"></td>
                     <td></td>
                     <input type="hidden" name="id[<?=$row['id']?>]" value="[<?=$row['id']?>]">
                 </tr>

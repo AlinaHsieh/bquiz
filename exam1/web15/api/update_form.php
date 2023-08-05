@@ -36,6 +36,11 @@ foreach($rows as $id => $text){
                 $row['acc'] = $_POST['acc'][$id];
                 $row['pw']= $_POST['pw'][$id];
             break;
+            case 'menu':
+                $row['text'] = $text;
+                $row['href'] = $_POST['href'][$id];
+                $row['sh'] = (!empty($_POST['sh']) && in_array($id,$_POST['sh']))?1:0; 
+            break;
         }
         $$db->save($row);
     }

@@ -17,16 +17,16 @@ $db = ucfirst($table);
                 </tr>
 
                 <?php
-                $rows = $this->all();
+                $rows = $this->all(['main_id'=>0]);
                 foreach($rows as $row){
                 ?>
                 <tr class="">
                     <td ><input type="text" name="text[<?=$row['id']?>]" value="<?=$row['text']?>"></td>
                     <td ><input type="text" name="href[<?=$row['id']?>]" value="<?=$row['href']?>"></td>
                     <td ></td>
-                    <td ><input type="checkbox" name="sh" value="<?=$row['id']?>" <?=$row['sh']==1?"checked":""?>></td>
+                    <td ><input type="checkbox" name="sh[<?=$row['id']?>]" value="<?=$row['id']?>" <?=$row['sh']==1?"checked":""?>></td>
                     <td ><input type="checkbox" name="del[<?=$row['id']?>]" value="<?=$row['id']?>"></td>
-                    <td></td>
+                    <td><input type="button" onclick="op('#cover','#cvr','./modal/edit_submenu.php?main_id=<?=$row['id']?>')" value="編輯次選單"></td>
                     <input type="hidden" name="id[<?=$row['id']?>]" value="[<?=$row['id']?>]">
                 </tr>
                 <?php

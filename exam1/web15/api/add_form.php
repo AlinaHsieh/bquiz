@@ -25,7 +25,9 @@ switch ($table){
     case 'menu':
         $data['href'] = $_POST['href'];
         $data['main_id']=0;
+        $data['sh'] =1;
     break;
+    
     
     default:
     $data['sh'] =1;

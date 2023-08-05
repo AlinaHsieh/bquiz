@@ -22,7 +22,7 @@ $db = ucfirst($table);
                     <td><img src="./upload/<?=$row['img']?>" style="width:100px; height:68px"></td>
                     <td><input type="checkbox" name="sh[<?=$row['id']?>]" value="<?=$row['id']?>" <?=$row['sh']==1?"checked":""?>></td>
                     <td><input type="checkbox" name="del[<?=$row['id']?>]" value="<?=$row['id']?>"></td>
-                    <td></td>
+                    <td><input type="button" onclick="op('#cover','#cvr','./modal/update_img.php?table=<?= $this->table ?>&id=<?=$row['id']?>')" value="更換圖片"></td>
                     <input type="hidden" name="id[<?=$row['id']?>]" value="[<?=$row['id']?>]">
 
                 </tr>
