@@ -117,21 +117,24 @@ class DB {
     }
 
     function paginate($num,$arg=null){
-        $total = $this->count($arg);
-        $pages = ceil($total/$num);
-        $now = $_GET['p']??1;
-        $start = ($now-1)*$num;
-        $rows = $this->all($arg, " limit $start, $num");
+        $total=$this->count($arg);
+        $pages=ceil($total/$num);
+        $now=$_GET['p']??1;
+        $start=($now-1)*$num;
+
+        $rows=$this->all($arg," limit $start,$num");
+
         $this->links=[
-            'total'=>$total,
-            'pages'=>$pages,
-            'now'=>$now,
-            'start'=>$start,
-            'rows'=>$rows,
-            'table'=>$this->table
+            "total"=>$total,
+            "pages"=>$pages,
+            "now"=>$now,
+            "start"=>$start,
+            "rows"=>$rows,
         ];
 
+        return $rows;
     }
+    
     function links($do=null){
         if(is_null($do)){
             $do = $this->table;
@@ -144,8 +147,9 @@ class DB {
         }
 
         for($i=1;$i<=$this->links['pages'];$i++){
-            $fontsize = ($_GET['p']==$i)?'24px':'16px';
-            $html= "<a href='?do=$do&p=$i'style='fontsize:$fontsize'> $i </a>";
+            // $fontsize = ($_GET['p']==$i)?'24px':'16px';
+            // $html.= "<a href='?do=$do&p=$i'> $i </a>";
+            $html.= "<a href='?do=$do&p=$i'> $i </a>";
         }
 
         if(($this->links['now']+1)<=$this->links['pages']){
@@ -155,12 +159,10 @@ class DB {
 
         return $html;
     }
+    
 
 
-
-
-
-
+    
 
 
 

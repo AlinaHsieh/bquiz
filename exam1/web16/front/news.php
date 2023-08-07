@@ -5,6 +5,7 @@
 				<h2 class="cent">更多最新消息顯示區</h2>
 				<hr>
                 <?=$News->morenews()?>
+                <?=$News->links()?>
 				
                 <script>
 						$(".ssaa li").hover(

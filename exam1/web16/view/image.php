@@ -15,7 +15,7 @@ $db = ucfirst($table);
                 </tr>
 
                 <?php
-                $rows = $$db->all();
+                $rows = $$db->paginate(3);
                 foreach($rows as $row){
                 ?>
                 <tr class="">
@@ -31,8 +31,11 @@ $db = ucfirst($table);
                 <?php
                 }
                 ?>
+                
             </tbody>
         </table>
+        <div class='cent'><?=$$db->links()?></div>
+
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
@@ -42,6 +45,7 @@ $db = ucfirst($table);
                 </tr>
             </tbody>
         </table>
+        
 
     </form>
 </div>

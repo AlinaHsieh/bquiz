@@ -1,4 +1,4 @@
-<?php include_once "base.php"; 
+<?php include_once "base.php";
 // $table = $_GET['do'];
 // $db = ucfirst($table);
 ?>
@@ -24,27 +24,50 @@
 
 	<div id="main">
 		<a title="" href="index.php?do=main">
-			<div class="ti" style="background:url('./upload/<?=$Title->find(['sh'=>1])['img']?>'); background-size:cover;"></div><!--標題-->
+			<div class="ti" style="background:url('./upload/<?= $Title->find(['sh' => 1])['img'] ?>'); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
-					<?=$Menu->show()?>
+					<?php
+					$rows = $Menu->show();
+					// dd($rows);
+					foreach($rows as $row){
+						echo "<div class='mainmu'>";
+						echo  "<a href='{$row['href']}'>";
+						echo  	$row['text'];
+						echo  "</a>";
+
+						if(isset($row['subs'])){
+							echo "<div class='mw'>";
+							foreach($row['subs'] as $sub){
+								echo "<div class='mainmu2'>";
+								echo  "<a href='{$sub['href']}'>";
+								echo 	$sub['text'];
+								echo  "</a>";
+								echo "</div>";
+							}
+						echo "</div>";
+
+						}
+						echo "</div>";
+					}
+					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-					<span class="t">進站總人數 :<?=$Total->find(1)['total']?></span>
+					<span class="t">進站總人數 :<?= $Total->find(1)['total'] ?></span>
 				</div>
 			</div>
-			
+
 			<?php
-			$do = $_GET['do']??'main';
+			$do = $_GET['do'] ?? 'main';
 			$file = "./front/{$do}.php";
-			
-			if(file_exists($file)){
+
+			if (file_exists($file)) {
 				include($file);
-			}else{
+			} else {
 				include "./front/main.php";
 			}
 
@@ -73,12 +96,12 @@
 					<span class="t botli">校園映象區</span>
 					<br>
 					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg"></div>
-					<?=$Image->show()?>
+					<?= $Image->show() ?>
 					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg"></div>
 
 					<script>
 						var nowpage = 0,
-							num = <?=$Image->num()?>;
+							num = <?= $Image->num() ?>;
 
 						function pp(x) {
 							var s, t;
@@ -102,7 +125,7 @@
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
 			<span class="t" style="line-height:123px;">
-			<?=$Bottom->find(1)['bottom']?>
+				<?= $Bottom->find(1)['bottom'] ?>
 			</span>
 		</div>
 	</div>

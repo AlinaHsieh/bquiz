@@ -42,8 +42,9 @@ class News extends DB{
     }
 
     function morenews(){
-        $rows = $this->all(['sh'=>1]," limit 5");
-        echo "<ol class='ssaa'>";
+        $rows = $this->paginate(5,['sh'=>1]);
+        $start = $this->links['start']+1;
+        echo "<ol class='ssaa' start=$start+1>";
         foreach($rows as $id => $row){
         echo "<li class='all'>";
         echo mb_substr($row['text'],0,20);

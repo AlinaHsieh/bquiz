@@ -27,14 +27,19 @@ class Menu extends DB{
     }
 
 
-    function show(){
-        $rows = $this->all(['sh'=>1,'main_id'=>0]);
-        foreach($rows as $row){
-        echo "<div class='mainmu'>";
-        echo "<a href='{$row['href']}'>{$row['text']}</a>";
-        echo "</div>";
+    public function show(){
+        $rows = $this->all(["sh"=>1,'main_id' => 0]);
+        foreach($rows as $idx => $row){
+            if($this->count(['main_id'=>$row['id']])>0){
+           $subs = $this->all(['main_id'=>$row['id']]);
+           $rows[$idx]['subs'] = $subs;
+            }
         }
-    } 
+        return $rows;
+        // dd($rows);
+        
+    }
+
 }
 
 ?>
