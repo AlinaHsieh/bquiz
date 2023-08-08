@@ -2,7 +2,7 @@
 
 class DB{
 
-    protected $dsn = "mysal:host=localhost;charset=utf8;dbname=web21";
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db21";
     protected $pdo;
     protected $table;
     protected $links;
@@ -51,13 +51,16 @@ class DB{
       return $this->math('sum',$col,...$arg);
     }
 
-    function save($sql,...$arg){
+    function save($arg){
         if(isset($arg['id'])){
-            $tmp = $this->a2s($arg);
-            $sql = " update $this->table set " . join(",",$tmp) . " where `id` = '{$arg['id']}'";
+            $tmp[]=$this->a2s($arg);
+                // print_r($tmp);
+            $sql="update $this->table set ". join(",",$tmp) . " where `id`='{$arg['id']}'";
+                // echo $sql;
         }else{
-            $keys = array_keys($arg);
-            $sql = " insert into $this->table (`" . join("`,`",$keys) ."`) values ('" . join("','",$arg) . "')" ;
+            $keys=array_keys($arg);
+            $sql = " insert into $this->table (`" . join("`,`",$keys) ."`) values('" . join("','",$arg) . "')" ;
+            // echo $sql;
         }
         return $this->pdo->exec($sql);
     }
@@ -154,11 +157,15 @@ class DB{
         return $html;
     }
 
-
-
-
 }
 
+//測試資料庫連線
+$db = new DB('viewer');
+// $db->save(['date'=>date("Y:m:d"),'viewer'=>200]);
+// echo $db->find(1)['viewer']; //測新增功能
+// echo "<hr>";
+$db->save(['id'=>1,'viewer'=>100]);
+echo $db->find(1)['viewer']; //測更新功能
 
 
 
