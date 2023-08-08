@@ -33,8 +33,8 @@ $data['sh']= 1;
 
 
 }
-// dd($data);
-$$db->save($data);
-to("../backend.php?do=$table");
+dd($data);
+// $$db->save($data);
+// to("../backend.php?do=$table");
 
 ?>

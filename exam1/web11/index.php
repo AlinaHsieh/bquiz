@@ -110,7 +110,7 @@
 					<script>
 						var nowpage = 0,
 							num = <?=$Image->num()?>;
-
+							// console.log(num);
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) {
