@@ -53,7 +53,7 @@ class DB{
 
     function save($arg){
         if(isset($arg['id'])){
-            $tmp[]=$this->a2s($arg);
+            $tmp=$this->a2s($arg);
                 // print_r($tmp);
             $sql="update $this->table set ". join(",",$tmp) . " where `id`='{$arg['id']}'";
                 // echo $sql;
@@ -70,7 +70,7 @@ class DB{
     function a2s($array){
         foreach($array as $key => $val){
             if($key!='id'){
-                $tmp = "`$key`='$val'";
+                $tmp[] = "`$key`='$val'";
             }
         }
         return $tmp;
@@ -80,24 +80,28 @@ class DB{
         if(!empty($arg)){
             if(isset($arg[0])){
                 if(is_array($arg)){
-                    $tmp = $this->a2s($arg[0]);
-                    $sql = $sql . " where " . join(" && ", $tmp);
+                    $tmp=$this->a2s($arg[0]);
+                    $sql=$sql ." where " . join(" && ",$tmp);
                 }else{
                     $sql = $sql . $arg[0];
                 }
             }
+
             if(isset($arg[1])){
                 $sql = $sql . $arg[1];
             }
         }
+
         return $sql;
     }
 
+        
 
     protected function sql_one($sql,$arg){
         if(is_array($arg)){
-            $tmp = $this->a2s($arg[0]);
-                    $sql = $sql . " where " . join(" && ", $tmp);
+            $tmp = $this->a2s($arg);
+            $sql = $sql . " where " . join(" && ", $tmp);
+            // echo $sql;
                 }else{
                     $sql = $sql . " where `id` = '$arg'";
                 }
@@ -160,12 +164,12 @@ class DB{
 }
 
 //測試資料庫連線
-$db = new DB('viewer');
-// $db->save(['date'=>date("Y:m:d"),'viewer'=>200]);
-// echo $db->find(1)['viewer']; //測新增功能
-// echo "<hr>";
-$db->save(['id'=>1,'viewer'=>100]);
-echo $db->find(1)['viewer']; //測更新功能
+// $db = new DB('viewer');
+// // $db->save(['date'=>date("Y:m:d"),'viewer'=>200]);
+// // echo $db->find(1)['viewer']; //測新增功能
+// // echo "<hr>";
+// $db->save(['id'=>1,'viewer'=>100]);
+// echo $db->find(1)['viewer']; //測更新功能
 
 
 
