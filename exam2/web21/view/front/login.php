@@ -46,9 +46,10 @@
         })
     }
 
-    function clean(){
-        $("#acc,#pw").val("");
+    // function clean(){
+    //     $("#acc,#pw").val("");
 
-    }
+    // }
+    ////已將function clean()寫在js
 
 </script>

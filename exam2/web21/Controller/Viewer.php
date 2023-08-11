@@ -8,7 +8,7 @@ class Viewer extends DB{
 
     function todayViewer(){
         $today = date("Y-m-d");
-        if(!isset($_SESSION)){
+        if(!isset($_SESSION['viewer'])){
             $chk = $this->count(['date'=>$today]);
             if($chk>0){
                 $row = $this->find(['date'=>$today]);
