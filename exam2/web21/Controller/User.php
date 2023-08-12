@@ -27,6 +27,14 @@ class User extends DB{
 
     }
 
+    function backend(){
+        $data=[
+            'rows'=>$this->all() //取得資料帶到目標頁面使用
+        ];
+        $this->view("./view/backend/user.php",$data);
+
+    }
+
 
 
 }
