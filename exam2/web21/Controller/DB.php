@@ -141,7 +141,7 @@ class DB{
     function links($do=null){
         $html='';
         if(is_null($do)){
-           $this->table = $do;
+            $do = $this->table ;
         }
         if(($this->links['now']-1)>=1){
             $prev=$this->links['now']-1;
@@ -149,7 +149,8 @@ class DB{
         }
 
         for($i=1;$i<=($this->links['pages']);$i++){
-            $fontsize = ($_GET['p']==$i)?'24px':'16px';
+            $now = $_GET['p']??1;
+            $fontsize = ($now==$i)?'24px':'16px';
             $html.= "<a href ='?do=$do&p=$i' style='font-size:$fontsize'> $i </a>";
         }
 
