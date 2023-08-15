@@ -10,12 +10,25 @@
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
+	<style>
+		.all {
+			background: rgba(51, 51, 51, 0.8);
+			color: #FFF;
+			min-height: 100px;
+			width: 300px;
+			position: fixed;
+			display: none;
+			z-index: 9999;
+			overflow: auto;
+			padding: 15px;
+			border-radius: 10px;
+			height: 250px;
+		}
+	</style>
 </head>
 
 <body>
-	<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
-		<pre id="ssaa"></pre>
-	</div>
+	
 	<div id="all">
 		<div id="title">
 			<?= date("m 月 d 號 l") ?> | 今日瀏覽: <?= $Viewer->todayViewer(); ?> | 累積瀏覽: <?= $Viewer->totalViewer() ?>
@@ -39,15 +52,15 @@
 						<?php
 						if (isset($_SESSION['user'])) {
 						?>
-						歡迎<?=$_SESSION['user']?>
-						<?php
-							if($_SESSION['user']=='admin'){
-							echo "<button onclick='location.href=&#39;./backend.php&#39;'>";
-							echo "管理";
-							echo "</button>";
-						}
-						?>
-						<button onclick="location.href='./api/logout.php'">登出</button>
+							歡迎<?= $_SESSION['user'] ?>
+							<?php
+							if ($_SESSION['user'] == 'admin') {
+								echo "<button onclick='location.href=&#39;./backend.php&#39;'>";
+								echo "管理";
+								echo "</button>";
+							}
+							?>
+							<button onclick="location.href='./api/logout.php'">登出</button>
 						<?php
 						} else {
 						?>
