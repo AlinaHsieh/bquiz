@@ -64,14 +64,15 @@
 					$table=ucfirst($do);
 					$file = "./view/backend/{$do}.php";
 
-					if (file_exists($file)) {
+					if(file_exists($file) && $do!='main'){
 						// include($file);
 						$$table->backend();
+
 					} else {
 						include "./view/backend/main.php";
 					}
-
 					?>
+				</div>
 				</div>
 			</div>
 		</div>

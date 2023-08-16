@@ -7,6 +7,7 @@ include_once __DIR__ . "/Controller/Viewer.php";
 include_once __DIR__ . "/Controller/User.php";
 include_once __DIR__ . "/Controller/News.php";
 include_once __DIR__ . "/Controller/Que.php";
+include_once __DIR__ . "/Controller/Log.php";
 
 
 function dd($array){
@@ -23,3 +24,4 @@ $Viewer = new Viewer;
 $User = new User;
 $News = new News;
 $Que = new Que;
+$Log = new Log;
