@@ -18,6 +18,7 @@
 
 <script>
 getList(1) //讓程式先執行一次type為1的
+
 $(".cat").click(function(){
     $("#header").text($(this).text())
     let type = $(this).data('type') //得到data-type藏的值1/2/3/4
