@@ -8,6 +8,7 @@
             <td>刪除</td>
         </tr>
         <?php
+        // dd($rows);
         foreach($rows as $row){
 
         

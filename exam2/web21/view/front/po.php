@@ -32,8 +32,6 @@ function getList(type){
         $("#lists").html(list);  //當回應返回時，它會將回應的內容填充到具有 id="lists" 的元素中，從而顯示文章列表。
     })
 }
-
-
 function getPost(id){ //拿到id值
     $.get("./api/get_post.php",{id},(post)=>{
         $("#lists").html("");

@@ -1,4 +1,6 @@
-﻿<?php include_once "base.php"; ?>
+﻿<?php
+include_once "./base.php";
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,13 +18,14 @@
 	<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
 		<pre id="ssaa"></pre>
 	</div>
+	<iframe name="back" style="display:none;"></iframe>
 	<div id="all">
 		<div id="title">
-			<?= date("m 月 d 號 l") ?> | 今日瀏覽: <?= $Viewer->todayViewer(); ?> | 累積瀏覽: <?= $Viewer->totalViewer() ?>
-			<a href="./index.php" style="float:right">回首頁</a>
+			<?= date("m月 d日 l"); ?> | 今日瀏覽: <?= $Viewer->todayViewer(); ?> | 累積瀏覽: <?= $Viewer->totalViewer(); ?>
+			<span style="float:right;"><a href="./index.php">回首頁</a></span>
 		</div>
 		<div id="title2">
-			<div><a href="index.php"><img src="./icon/02B01.jpg" title="健康促進網-回首頁"></a></div>
+			<a href="index.php"><img src="./icon/02B01.jpg" title="健康促進網-回首頁"></a>
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
@@ -38,42 +41,32 @@
 					<span style="width:25%; display:inline-block;">
 						<?php
 						if (isset($_SESSION['user'])) {
-						?>
-						歡迎<?=$_SESSION['user']?>
-						<?php
-							if($_SESSION['user']=='admin'){
-							echo "<button onclick='location.href=&#39;backend.php&#39;'>";
-							echo "管理";
-							echo "</button>";
-						}
-						?>
-						<button onclick="location.href='./api/logout.php'">登出</button>
-						<?php
+							echo "歡迎" . $_SESSION['user'];
+							if ($_SESSION['user'] == 'admin') {
+								echo "<button onclick='location.href=&#39;../backend.php&#39;'>管理</button>";
+							}
+							echo "<button onclick='location.href=&#39;./api/logout.php&#39;'>登出</button>";
 						} else {
-						?>
-							<a href="?do=login">會員登入</a>
-						<?php
+							echo "<a href='?do=login'>會員登入</a>";
 						}
+
 						?>
 					</span>
 				</div>
 				<div class="">
-
 					<?php
 					$do = $_GET['do'] ?? 'main';
-					$table=ucfirst($do);
-					$file = "./view/backend/{$do}.php";
+					$table = ucfirst($do);
+					$file = "./view/back/{$do}.php";
 
-					if(file_exists($file) && $do!='main'){
-						// include($file);
+					if (file_exists($file) && $do!='main') {
 						$$table->backend();
-
 					} else {
-						include "./view/backend/main.php";
+						include "./view/back/main.php";
 					}
 					?>
 				</div>
-				</div>
+
 			</div>
 		</div>
 		<div id="bottom">

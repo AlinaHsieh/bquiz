@@ -116,8 +116,9 @@ class DB {
         $pages = ceil($total/$num);
         $now = $_GET['p']??1;
         $start = ($now-1)*$num;
-
+        // echo $arg,$arg2 . " limit $start, $num";
         $rows = $this->all($arg,$arg2 . " limit $start, $num");
+        // echo "<pre>" . print_r($rows) . "</pre>";
         $this->links=[
             'total' => $total,
             'pages' => $pages,
