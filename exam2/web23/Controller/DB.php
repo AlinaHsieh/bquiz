@@ -29,6 +29,7 @@ class DB
 
     function find($arg){
         $sql = $this->sql_one(" select * from $this->table ",$arg);
+        echo $sql;
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 

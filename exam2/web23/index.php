@@ -43,7 +43,7 @@ include_once "./base.php";
 						if (isset($_SESSION['user'])) {
 							echo "歡迎" . $_SESSION['user'];
 							if ($_SESSION['user'] == 'admin') {
-								echo "<button onclick='location.href=&#39;../backend.php&#39;'>管理</button>";
+								echo "<button onclick='location.href=&#39;./backend.php&#39;'>管理</button>";
 							}
 							echo "<button onclick='location.href=&#39;./api/logout.php&#39;'>登出</button>";
 						} else {
