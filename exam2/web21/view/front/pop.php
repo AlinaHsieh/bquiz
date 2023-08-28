@@ -13,8 +13,8 @@
             <tr>
                 <td width="30%" class="title"><?= $row['title']; ?></td>
                 <td width="40%" class="content">
-                    <div class="short"><?= mb_substr($row['text'], 0, 25); ?></div>
-                    <div class="all"><?= $row['text'], 0, 25; ?></div>
+                    <div class="short"><?= mb_substr($row['text'], 0, 25);?></div>
+                    <div class="all"><?= $row['text'];?></div>
                 </td>
                 <td>
                     <span><?=$row['goods']?></span>個人說讚<div class="good"></div>
