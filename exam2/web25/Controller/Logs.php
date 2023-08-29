@@ -10,9 +10,9 @@ class Logs extends DB{
     function showGoods($news){
         $chk = $this->count(['user'=>$_SESSION['user'],'news'=>$news]);
         if($chk>0){
-            return "收回讚";
+            return "<a href='#' class='goods' data-id='$news'>收回讚</a>";
         }else{
-            return "讚";
+            return "<a href='#' class='goods' data-id='$news'>讚</a>";
         }
     }
 
