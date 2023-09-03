@@ -4,5 +4,5 @@ $_POST['acc']=$_SESSION['user'];
 $_POST['orderdate']=date('Y-m-d');
 $_POST['cart']=serialize($_SESSION['cart']);
 // dd($_POST);
-
 $Order->save($_POST);
+unset($_SESSION['cart']);

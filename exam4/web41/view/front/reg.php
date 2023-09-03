@@ -54,6 +54,7 @@
             user.acc=$("#acc").val();
             user.pw=$("#pw").val();
             user.tel=$("#tel").val();
+            user.email=$("#email").val();
             user.address=$("#address").val();
             user.regdate=$("#regdate").val();
 

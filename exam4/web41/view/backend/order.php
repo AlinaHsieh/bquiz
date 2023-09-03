@@ -20,7 +20,7 @@
         <td class="pp"><?=$row['name']?></td>
         <td class="pp"><?=$row['orderdate']?></td>
         <td class="pp">
-           <button type="button" onclick="del('User',<?=$row['id']?>)">刪除</button>
+           <button type="button" onclick="del('Order',<?=$row['id']?>)">刪除</button>
         </td>
     </tr>
     <?php
