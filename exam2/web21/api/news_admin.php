@@ -8,8 +8,8 @@ foreach($_POST['id'] as $id){
     }else{
         $row = $News->find($id);
         $row['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
-        $News->save($row);
+        // $News->save($row);
     }
 
 }
-to("../backend.php?do=news");
+// to("../backend.php?do=news");
