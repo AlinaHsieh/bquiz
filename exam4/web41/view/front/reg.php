@@ -33,6 +33,7 @@
         <input type="hidden" name="regdate" id="regdate" value="<?=date("Y-m-d");?>">
         <input type="button" value="註冊" onclick="reg()">
         <input type="reset" value="重置">
+        <input type="hidden" name="regdate" value="<?=date("Ymd")?>">
     </div>
 </form>
 
