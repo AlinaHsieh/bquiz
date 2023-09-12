@@ -55,7 +55,7 @@ $good = $Goods->find($_GET['id']);
   function getBigs(){
     $.post("./api/bigs.php",(big)=>{
         $("#big").html(big);
-        $("#big option[value=<?=$good['id']?>]").prop("selected",true);        
+        $("#big option[value='<?=$good['big']?>']").prop("selected",true);        
         getMids($("#big").val());
     })
   }
